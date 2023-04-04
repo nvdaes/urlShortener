@@ -54,4 +54,4 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		description=_("Activates the Shorten URL dialog.")
 	)
 	def script_activateShortenUrlDialog(self, gesture):
-		wx.CallAfter(self.onFeeds, None)
+		wx.CallAfter(self.onShortenUrl, None)
