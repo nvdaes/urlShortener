@@ -14,6 +14,7 @@ import gui
 from gui import guiHelper
 
 from .isGd import IsGd, UrlMetadata
+from .skipTranslation import translate
 
 URLS_PATH = os.path.join(os.path.dirname(__file__), "urls.pickle")
 
@@ -100,7 +101,7 @@ class UrlsDialog(wx.Dialog):
 		sHelper.addItem(urlsListGroupSizer)
 
 		# Message translated in NVDA core.
-		closeButton = wx.Button(self, wx.ID_CLOSE, label=_("&Close"))
+		closeButton = wx.Button(self, wx.ID_CLOSE, label=translate("&Close"))
 		closeButton.Bind(wx.EVT_BUTTON, lambda evt: self.Close())
 		sHelper.addDialogDismissButtons(closeButton)
 		self.Bind(wx.EVT_CLOSE, self.onClose)
@@ -205,7 +206,7 @@ class UrlsDialog(wx.Dialog):
 			# Translators: The confirmation prompt displayed when the user requests to delete an URL.
 			_("Are you sure you want to delete this URL? This cannot be undone."),
 			# Message translated in NVDA core.
-			_("Confirm Deletion"),
+			translate("Confirm Deletion"),
 			wx.YES | wx.NO | wx.ICON_QUESTION, self
 		) == wx.NO:
 			self.urlsList.SetFocus()
