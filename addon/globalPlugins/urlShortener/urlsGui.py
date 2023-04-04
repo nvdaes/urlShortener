@@ -40,6 +40,7 @@ class UrlsDialog(wx.Dialog):
 		try:
 			with open(URLS_PATH, "rb") as f:
 				self._urls = pickle.load(f)
+			self._urls.sort(key=getUrlMetadataName)
 		except Exception:
 			self._urls = [UrlMetadata("example.com", "example.com", "https://is.gd/iKpnPV")]
 
@@ -186,7 +187,6 @@ class UrlsDialog(wx.Dialog):
 			return
 		urlMetadata = self.shortenUrl(d.Value)
 		self._urls.append(urlMetadata)
-		self._urls.sort(key=getUrlMetadataName)
 		try:
 			with open(URLS_PATH, "wb") as f:
 				pickle.dump(self._urls, f, protocol=0)

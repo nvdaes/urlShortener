@@ -7,7 +7,7 @@
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from urllib.request import urlopen, Request
-from urllib.parse import unquote
+from urllib.parse import quote
 from typing import Optional
 
 from logHandler import log
@@ -35,11 +35,11 @@ class IsGd(UrlShortener):
 
 	def shortenUrl(self) -> Optional[str]:
 		url = self.originalUrl
-		unquotedUrl = unquote(url)
+		quotedUrl = quote(url)
 		headers = {
 			'User-Agent': 'Mozilla'
 		}
-		apiUrl = f"https://is.gd/create.php?format=simple&url={unquotedUrl}"
+		apiUrl = f"https://is.gd/create.php?format=simple&url={quotedUrl}"
 		try:
 			resp = urlopen(Request(apiUrl, headers=headers))
 			self.shortenedUrl = resp.read().decode("utf-8")
