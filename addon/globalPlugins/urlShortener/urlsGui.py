@@ -10,6 +10,7 @@ import re
 import wx
 
 import api
+from logHandler import log
 import gui
 from gui import guiHelper
 
@@ -21,6 +22,36 @@ URLS_PATH = os.path.join(os.path.dirname(__file__), "urls.pickle")
 
 def getUrlMetadataName(urlMetadata):
 	return urlMetadata.name
+
+
+class NewUrlDialog(wx.Dialog):
+
+	def __init__(self, parent, title=_("&Rename URL")):
+		# Translators: title of a dialog.
+		super(NewUrlDialog, self).__init__(parent, title=title)
+
+		mainSizer = wx.BoxSizer(wx.VERTICAL)
+		sHelper = guiHelper.BoxSizerHelper(self, orientation=wx.VERTICAL)
+
+		# Translators: The label of a field to enter an address for a new shortened URL.
+		urlLabelText = _("&URL")
+		self.urlTextCtrl = sHelper.addLabeledControl(urlLabelText, wx.TextCtrl)
+
+		# Translators: The label of a field to enter the name for a new URL.
+		nameLabelText = _("&Name")
+		self.nameTextCtrl = sHelper.addLabeledControl(nameLabelText, wx.TextCtrl)
+
+		sHelper.addDialogDismissButtons(wx.OK | wx.CANCEL, separated=True)
+		mainSizer.Add(sHelper.sizer, border=guiHelper.BORDER_FOR_DIALOGS, flag=wx.ALL)
+		mainSizer.Fit(self)
+		self.SetSizer(mainSizer)
+		self.urlTextCtrl.SetFocus()
+		self.Bind(wx.EVT_BUTTON, self.onOk, id=wx.ID_OK)
+
+	def onOk(self, evt):
+		self.url = self.urlTextCtrl.GetValue()
+		self.name = self.nameTextCtrl.GetValue()
+		evt.Skip()
 
 
 class UrlsDialog(wx.Dialog):
@@ -41,9 +72,9 @@ class UrlsDialog(wx.Dialog):
 			with open(URLS_PATH, "rb") as f:
 				self._urls = pickle.load(f)
 			self._urls.sort(key=getUrlMetadataName)
-		except Exception:
+		except Exception as e:
 			self._urls = [UrlMetadata("example.com", "example.com", "https://is.gd/iKpnPV")]
-
+			log.debugWarning(f"Could not open URLs file: {e}")
 		super(UrlsDialog, self).__init__(
 			# Translators: Title of a dialog.
 			parent, title=_("urls")
@@ -171,21 +202,17 @@ class UrlsDialog(wx.Dialog):
 			self.urlsList.SetFocus()
 
 	def onNew(self, evt):
-		# Translators: The label of a field to enter an address for a new shortened URL.
-		with wx.TextEntryDialog(
-			# Translators: Label of a dialog.
-			self, _("URL to shorten"),
-			# Translators: The title of a dialog to shorten an URL.
-			_("Shorten URL")
-		) as d:
-			if d.ShowModal() == wx.ID_CANCEL:
-				self.urlsList.SetFocus()
-				return
-		originalUrls = [url.name for url in self._urls]
-		if d.Value in originalUrls:
+		newUrlDialog = NewUrlDialog(self, title=_("Shorten URL"))
+		if newUrlDialog.ShowModal() == wx.ID_CANCEL:
 			self.urlsList.SetFocus()
 			return
-		urlMetadata = self.shortenUrl(d.Value)
+		originalUrls = [url.originalUrl for url in self._urls]
+		if newUrlDialog.url in originalUrls:
+			self.urlsList.SetFocus()
+			return
+		urlMetadata = self.shortenUrl(newUrlDialog.url)
+		if newUrlDialog.name:
+			urlMetadata.name = newUrlDialog.name
 		self._urls.append(urlMetadata)
 		try:
 			with open(URLS_PATH, "wb") as f:
