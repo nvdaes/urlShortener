@@ -30,5 +30,5 @@ def onInstall():
 		for file in validFiles:
 			try:
 				shutil.copy(file, URLS_PATH)
-			except Exception as e:
+			except Exception:
 				pass
