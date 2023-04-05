@@ -23,7 +23,7 @@ from .skipTranslation import translate
 
 CONFIG_PATH = globalVars.appArgs.configPath
 ADDON_CONFIG_PATH = os.path.join(CONFIG_PATH, "urlShortener")
-URLS_PATH = os.path.join(ADDON_CONFIG_PATH, "URLS.JSON")
+URLS_PATH = os.path.join(ADDON_CONFIG_PATH, "urls.json")
 
 
 def getUrlMetadataName(urlMetadata):
