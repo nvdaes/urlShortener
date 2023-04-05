@@ -10,6 +10,8 @@ import re
 import wx
 
 import api
+import core
+import ui
 from logHandler import log
 import gui
 from gui import guiHelper
@@ -190,16 +192,10 @@ class UrlsDialog(wx.Dialog):
 		self.deleteButton.Enabled = (self.sel >= 0 and self.urlsList.Count > 1)
 
 	def onCopy(self, evt):
-		if gui.messageBox(
-			# Translators: the label of a message box dialog.
-			_("Do you want to copy shortened URL to the clipboard?"),
-			# Translators: the title of a message box dialog.
-			_("Copy shortened URL"),
-			wx.YES | wx.NO | wx.CANCEL | wx.ICON_QUESTION
-		) == wx.YES:
-			shortenUrl = self._urls[self.filteredItems[self.sel]].shortenedUrl
-			api.copyToClip(shortenUrl)
-			self.urlsList.SetFocus()
+		shortenUrl = self._urls[self.filteredItems[self.sel]].shortenedUrl
+		if api.copyToClip(shortenUrl):
+			core.callLater(100, ui.message, translate("Copied"))
+		self.urlsList.SetFocus()
 
 	def onNew(self, evt):
 		newUrlDialog = NewUrlDialog(self, title=_("Shorten URL"))
