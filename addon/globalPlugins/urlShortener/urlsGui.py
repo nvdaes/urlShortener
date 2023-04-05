@@ -4,10 +4,11 @@
 # Copyright (C) 2023 Noelia Ruiz Martínez
 # Released under GPL 2
 
+import json
 import os
-import pickle
 import re
 import wx
+from dataclasses import asdict
 
 import api
 import core
@@ -19,7 +20,7 @@ from gui import guiHelper
 from .isGd import IsGd, UrlMetadata
 from .skipTranslation import translate
 
-URLS_PATH = os.path.join(os.path.dirname(__file__), "urls.pickle")
+URLS_PATH = os.path.join(os.path.dirname(__file__), "urls.json")
 
 
 def getUrlMetadataName(urlMetadata):
@@ -71,9 +72,13 @@ class UrlsDialog(wx.Dialog):
 		if UrlsDialog._instance is not None:
 			return
 		UrlsDialog._instance = self
+		self._urls = []
+		jsonUrls = []
 		try:
-			with open(URLS_PATH, "rb") as f:
-				self._urls = pickle.load(f)
+			with open(URLS_PATH, "rt") as f:
+				jsonUrls = json.load(f)
+			for url in jsonUrls:
+				self._urls.append(UrlMetadata(**url))
 			self._urls.sort(key=getUrlMetadataName)
 		except Exception as e:
 			self._urls = [UrlMetadata("example.com", "example.com", "https://is.gd/iKpnPV")]
@@ -117,6 +122,8 @@ class UrlsDialog(wx.Dialog):
 
 		# Translators: The label of a button to copy the URL.
 		self.copyButton = buttonHelper.addButton(self, label=_("&Copy shortened URL..."))
+		self.AffirmativeId = self.copyButton.Id
+		self.copyButton.SetDefault()
 		self.copyButton.Bind(wx.EVT_BUTTON, self.onCopy)
 
 		# Translators: The label of a button to add a new URL.
@@ -209,12 +216,16 @@ class UrlsDialog(wx.Dialog):
 			self.urlsList.SetFocus()
 			return
 		urlMetadata = self.shortenUrl(newUrlDialog.url)
+		if not urlMetadata.shortenedUrl:
+			self.urlsList.SetFocus()
+			return
 		if newUrlDialog.name:
 			urlMetadata.name = newUrlDialog.name
 		self._urls.append(urlMetadata)
+		jsonUrls = [asdict(url) for url in self._urls]
 		try:
-			with open(URLS_PATH, "wb") as f:
-				pickle.dump(self._urls, f, protocol=0)
+			with open(URLS_PATH, "wt") as f:
+				json.dump(jsonUrls, f, indent="\t")
 		except Exception as e:
 			raise e
 		name = urlMetadata.name
@@ -239,9 +250,10 @@ class UrlsDialog(wx.Dialog):
 			return
 
 		del self._urls[self.filteredItems[self.sel]]
+		jsonUrls = [asdict(url) for url in self._urls]
 		try:
-			with open(URLS_PATH, "wb") as f:
-				pickle.dump(self._urls, f, protocol=0)
+			with open(URLS_PATH, "wt") as f:
+				json.dump(jsonUrls, f, indent="\t")
 		except Exception as e:
 			raise e
 		del self.choices[self.filteredItems[self.sel]]
@@ -262,14 +274,15 @@ class UrlsDialog(wx.Dialog):
 			# Translators: The title of a dialog to rename an URL.
 			_("Rename URL"), value=self.stringSel
 		) as d:
-			if d.ShowModal() == wx.ID_CANCEL or not d.Value:
+			if d.ShowModal() == wx.ID_CANCEL or not d.GetValue():
 				self.urlsList.SetFocus()
 				return
-		newName = d.Value
+		newName = d.GetValue()
 		self._urls[self.filteredItems[self.sel]].name = newName
+		jsonUrls = [asdict(url) for url in self._urls]
 		try:
-			with open(URLS_PATH, "wb") as f:
-				pickle.dump(self._urls, f, protocol=0)
+			with open(URLS_PATH, "wt") as f:
+				json.dump(jsonUrls, f, indent="\t")
 		except Exception as e:
 			raise e
 		self.urlsList.SetString(self.sel, newName)
