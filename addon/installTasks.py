@@ -12,7 +12,7 @@ import addonHandler
 import globalVars
 
 ADDON_DIR = os.path.abspath(os.path.dirname(__file__))
-URLS_PATH = os.path.join(ADDON_DIR, "globalPlugins", "readFeeds", "personalFeeds")
+URLS_PATH = os.path.join(ADDON_DIR, "globalPlugins", urlShortener
 CONFIG_PATH = globalVars.appArgs.configPath
 
 addonHandler.initTranslation()
@@ -31,4 +31,4 @@ def onInstall():
 			try:
 				shutil.copy(file, URLS_PATH)
 			except Exception as e:
-				raise e
+				pass
