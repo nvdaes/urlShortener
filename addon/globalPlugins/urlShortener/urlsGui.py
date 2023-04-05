@@ -12,6 +12,7 @@ from dataclasses import asdict
 
 import api
 import core
+import globalVars
 import ui
 from logHandler import log
 import gui
@@ -19,8 +20,9 @@ from gui import guiHelper
 
 from .isGd import IsGd, UrlMetadata
 from .skipTranslation import translate
-from ...installTasks import ADDON_CONFIG_PATH
 
+CONFIG_PATH = globalVars.appArgs.configPath
+ADDON_CONFIG_PATH = os.path.join(CONFIG_PATH, "urlShortener")
 URLS_PATH = os.path.join(ADDON_CONFIG_PATH, "URLS.JSON")
 
 
