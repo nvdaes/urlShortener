@@ -7,6 +7,7 @@
 import json
 import os
 import re
+import shutil
 import wx
 from dataclasses import asdict
 
@@ -140,6 +141,10 @@ class UrlsDialog(wx.Dialog):
 		# Translators: The label of a button to delete an URL.
 		self.deleteButton = buttonHelper.addButton(self, label=_("&Delete..."))
 		self.deleteButton.Bind(wx.EVT_BUTTON, self.onDelete)
+
+		# Translators: The label of a button to delete settings folder.
+		self.removeSettingsButton = buttonHelper.addButton(self, label=_("&Remove saved URLs..."))
+		self.removeSettingsButton.Bind(wx.EVT_BUTTON, self.onRemoveSettings)
 
 		urlsListGroupContents.Add(buttonHelper.sizer)
 		urlsListGroupSizer.Add(urlsListGroupContents, border=guiHelper.BORDER_FOR_DIALOGS, flag=wx.ALL)
@@ -291,6 +296,19 @@ class UrlsDialog(wx.Dialog):
 		self.urlsList.SetString(self.sel, newName)
 		self.choices[self.filteredItems[self.sel]] = newName
 		self.onUrlsListChoice(None)
+		self.urlsList.SetFocus()
+
+	def onRemoveSettings(self, evt):
+		if gui.messageBox(
+			# Translators: The confirmation prompt displayed when the user requests to delete saved URLs.
+			_("Are you sure you want to delete your saved URLs?"),
+			# Message translated in NVDA core.
+			translate("Confirm Deletion"),
+			wx.YES | wx.NO | wx.ICON_QUESTION, self
+		) == wx.NO:
+			self.urlsList.SetFocus()
+			return
+		shutil.rmtree(ignore_errors=True)
 		self.urlsList.SetFocus()
 
 	def onClose(self, evt):
