@@ -5,8 +5,8 @@
 # Released under GPL2
 
 import os
+import shutil
 
-import addonHandler
 import globalVars
 
 CONFIG_PATH = globalVars.appArgs.configPath
@@ -19,7 +19,4 @@ def onInstall():
 
 
 def onUninstall():
-	try:
-		os.removedirs(ADDON_CONFIG_PATH)
-	except Exception as e:
-		raise e
+	shutil.rmtree(ADDON_CONFIG_PATH, ignore_errors=True)
