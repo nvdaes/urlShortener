@@ -21,7 +21,7 @@ def onInstall():
 		"globalPlugins", "urlShortener"
 	)
 	if os.path.isdir(previousUrlPath):
-		validFiles = glob.glob(previousUrlPath + "\\urls.json")
+		validFiles = glob.glob(previousUrlPath + "\\*.json")
 		if not os.path.isdir(URL_PATH):
 			os.makedirs(URL_PATH)
 		for file in validFiles:
