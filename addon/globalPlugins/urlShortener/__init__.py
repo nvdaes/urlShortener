@@ -4,6 +4,7 @@
 # Copyright (C) 2023 Noelia Ruiz Martínez
 # Released under GPL 2
 
+import os
 import wx
 
 import globalPluginHandler
@@ -12,7 +13,7 @@ from scriptHandler import script
 import gui
 import addonHandler
 
-from .urlsGui import UrlsDialog
+from .urlsGui import ADDON_CONFIG_PATH, UrlsDialog
 
 addonHandler.initTranslation
 
@@ -31,6 +32,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	scriptCategory = ADDON_SUMMARY
 
 	def __init__(self):
+		if not os.path.isdir(ADDON_CONFIG_PATH):
+			os.makedirs(ADDON_CONFIG_PATH)
 		super(GlobalPlugin, self).__init__()
 		self.toolsMenu = gui.mainFrame.sysTrayIcon.toolsMenu
 		# Translators: the name of a menu item.
