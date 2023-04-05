@@ -28,8 +28,9 @@ def getUrlMetadataName(urlMetadata):
 
 class NewUrlDialog(wx.Dialog):
 
+	# Translators: The title of a dialog.
 	def __init__(self, parent, title=_("&Rename URL")):
-		# Translators: title of a dialog.
+		# Translators: The title of a dialog.
 		super(NewUrlDialog, self).__init__(parent, title=title)
 
 		mainSizer = wx.BoxSizer(wx.VERTICAL)
@@ -78,7 +79,7 @@ class UrlsDialog(wx.Dialog):
 			self._urls = [UrlMetadata("example.com", "example.com", "https://is.gd/iKpnPV")]
 			log.debugWarning(f"Could not open URLs file: {e}")
 		super(UrlsDialog, self).__init__(
-			# Translators: Title of a dialog.
+			# Translators: The title of a dialog.
 			parent, title=_("urls")
 		)
 
@@ -122,7 +123,7 @@ class UrlsDialog(wx.Dialog):
 		newButton = buttonHelper.addButton(self, label=_("&New..."))
 		newButton.Bind(wx.EVT_BUTTON, self.onNew)
 
-		# Translators: The label of a button to rename an URL entry.
+		# Translators: The label of a button to rename an URL.
 		self.renameButton = buttonHelper.addButton(self, label=_("&Rename..."))
 		self.renameButton.Bind(wx.EVT_BUTTON, self.onRename)
 
@@ -159,7 +160,7 @@ class UrlsDialog(wx.Dialog):
 				gui.messageBox,
 				# Translators: Message presented when a shortened URL cannot be added.
 				_('Cannot add URL: %s' % e),
-				# Translators: error message.
+				# Translators: Error message.
 				_("Error"),
 				wx.OK | wx.ICON_ERROR
 			)
@@ -198,6 +199,7 @@ class UrlsDialog(wx.Dialog):
 		self.urlsList.SetFocus()
 
 	def onNew(self, evt):
+		# Translators: The title of a dialog.
 		newUrlDialog = NewUrlDialog(self, title=_("Shorten URL"))
 		if newUrlDialog.ShowModal() == wx.ID_CANCEL:
 			self.urlsList.SetFocus()
