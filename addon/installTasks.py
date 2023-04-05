@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 # installTasks for the urlShortener add-on
-# Copyright (C) 202023 Noelia Ruiz Martínez, other contributors
+# Copyright (C) 2023 Noelia Ruiz Martínez, other contributors
 # Released under GPL2
 
 import os
@@ -30,5 +30,5 @@ def onInstall():
 		for file in validFiles:
 			try:
 				shutil.copy(file, URLS_PATH)
-			except Exception:
-				pass
+			except Exception as e:
+				raise e
