@@ -12,7 +12,7 @@ import addonHandler
 import globalVars
 
 ADDON_DIR = os.path.abspath(os.path.dirname(__file__))
-URLS_PATH = os.path.join(ADDON_DIR, "globalPlugins", urlShortener
+URLS_PATH = os.path.join(ADDON_DIR, "globalPlugins", "urlShortener")
 CONFIG_PATH = globalVars.appArgs.configPath
 
 addonHandler.initTranslation()
