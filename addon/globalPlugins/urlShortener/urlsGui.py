@@ -19,8 +19,9 @@ from gui import guiHelper
 
 from .isGd import IsGd, UrlMetadata
 from .skipTranslation import translate
+from ...installTasks import ADDON_CONFIG_PATH
 
-URLS_PATH = os.path.join(os.path.dirname(__file__), "urls.json")
+URLS_PATH = os.path.join(ADDON_CONFIG_PATH, "URLS.JSON")
 
 
 def getUrlMetadataName(urlMetadata):

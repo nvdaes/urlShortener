@@ -4,27 +4,19 @@
 # Copyright (C) 2023 Noelia Ruiz Martínez, other contributors
 # Released under GPL2
 
-import json
 import os
+import shutil
 
-import addonHandler
 import globalVars
 
-ADDON_DIR = os.path.abspath(os.path.dirname(__file__))
-URLS_PATH = os.path.join(ADDON_DIR, "globalPlugins", "urlShortener")
 CONFIG_PATH = globalVars.appArgs.configPath
-
-addonHandler.initTranslation()
+ADDON_CONFIG_PATH = os.path.join(CONFIG_PATH, "urlShortener")
 
 
 def onInstall():
-	previousUrlsPath = os.path.join(
-		CONFIG_PATH, "addons", "urlShortener",
-		"globalPlugins", "urlShortener", "urls.json"
-	)
-	if not os.path.isfile(previousUrlsPath):
-		return
-	with open(previousUrlsPath, "rt") as f:
-		data = json.load(f)
-	with open(URLS_PATH, "wt") as f:
-		json.dump(data, f, indent="\t")
+	if not os.path.isdir(ADDON_CONFIG_PATH):
+		os.makedirs(ADDON_CONFIG_PATH)
+
+
+def onUninstall():
+	shutil.rmtree(ADDON_CONFIG_PATH, ignore_errors=True)
