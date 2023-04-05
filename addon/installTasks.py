@@ -4,9 +4,8 @@
 # Copyright (C) 2023 Noelia Ruiz Martínez, other contributors
 # Released under GPL2
 
+import json
 import os
-import shutil
-import glob
 
 import addonHandler
 import globalVars
@@ -21,14 +20,11 @@ addonHandler.initTranslation()
 def onInstall():
 	previousUrlsPath = os.path.join(
 		CONFIG_PATH, "addons", "urlShortener",
-		"globalPlugins", "urlShortener"
+		"globalPlugins", "urlShortener", "urls.json"
 	)
-	if os.path.isdir(previousUrlsPath):
-		validFiles = glob.glob(previousUrlsPath + "\\*.json")
-		if not os.path.isdir(URLS_PATH):
-			os.makedirs(URLS_PATH)
-		for file in validFiles:
-			try:
-				shutil.copy(file, URLS_PATH)
-			except Exception:
-				pass
+	if not os.path.isfile(previousUrlsPath):
+		return
+	with open(previousUrlsPath, "rt") as f:
+		data = json.load(f)
+	with open(URLS_PATH, "wt") as f:
+		json.dump(data, f, indent="\t")
