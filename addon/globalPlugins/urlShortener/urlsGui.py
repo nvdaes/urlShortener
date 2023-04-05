@@ -10,6 +10,9 @@ import re
 import wx
 
 import api
+import core
+import ui
+from logHandler import log
 import gui
 from gui import guiHelper
 
@@ -21,6 +24,37 @@ URLS_PATH = os.path.join(os.path.dirname(__file__), "urls.pickle")
 
 def getUrlMetadataName(urlMetadata):
 	return urlMetadata.name
+
+
+class NewUrlDialog(wx.Dialog):
+
+	# Translators: The title of a dialog.
+	def __init__(self, parent, title=_("&Rename URL")):
+		# Translators: The title of a dialog.
+		super(NewUrlDialog, self).__init__(parent, title=title)
+
+		mainSizer = wx.BoxSizer(wx.VERTICAL)
+		sHelper = guiHelper.BoxSizerHelper(self, orientation=wx.VERTICAL)
+
+		# Translators: The label of a field to enter an address for a new shortened URL.
+		urlLabelText = _("&URL")
+		self.urlTextCtrl = sHelper.addLabeledControl(urlLabelText, wx.TextCtrl)
+
+		# Translators: The label of a field to enter the name for a new URL.
+		nameLabelText = _("&Name")
+		self.nameTextCtrl = sHelper.addLabeledControl(nameLabelText, wx.TextCtrl)
+
+		sHelper.addDialogDismissButtons(wx.OK | wx.CANCEL, separated=True)
+		mainSizer.Add(sHelper.sizer, border=guiHelper.BORDER_FOR_DIALOGS, flag=wx.ALL)
+		mainSizer.Fit(self)
+		self.SetSizer(mainSizer)
+		self.urlTextCtrl.SetFocus()
+		self.Bind(wx.EVT_BUTTON, self.onOk, id=wx.ID_OK)
+
+	def onOk(self, evt):
+		self.url = self.urlTextCtrl.GetValue()
+		self.name = self.nameTextCtrl.GetValue()
+		evt.Skip()
 
 
 class UrlsDialog(wx.Dialog):
@@ -41,11 +75,11 @@ class UrlsDialog(wx.Dialog):
 			with open(URLS_PATH, "rb") as f:
 				self._urls = pickle.load(f)
 			self._urls.sort(key=getUrlMetadataName)
-		except Exception:
+		except Exception as e:
 			self._urls = [UrlMetadata("example.com", "example.com", "https://is.gd/iKpnPV")]
-
+			log.debugWarning(f"Could not open URLs file: {e}")
 		super(UrlsDialog, self).__init__(
-			# Translators: Title of a dialog.
+			# Translators: The title of a dialog.
 			parent, title=_("urls")
 		)
 
@@ -89,7 +123,7 @@ class UrlsDialog(wx.Dialog):
 		newButton = buttonHelper.addButton(self, label=_("&New..."))
 		newButton.Bind(wx.EVT_BUTTON, self.onNew)
 
-		# Translators: The label of a button to rename an URL entry.
+		# Translators: The label of a button to rename an URL.
 		self.renameButton = buttonHelper.addButton(self, label=_("&Rename..."))
 		self.renameButton.Bind(wx.EVT_BUTTON, self.onRename)
 
@@ -126,7 +160,7 @@ class UrlsDialog(wx.Dialog):
 				gui.messageBox,
 				# Translators: Message presented when a shortened URL cannot be added.
 				_('Cannot add URL: %s' % e),
-				# Translators: error message.
+				# Translators: Error message.
 				_("Error"),
 				wx.OK | wx.ICON_ERROR
 			)
@@ -159,33 +193,24 @@ class UrlsDialog(wx.Dialog):
 		self.deleteButton.Enabled = (self.sel >= 0 and self.urlsList.Count > 1)
 
 	def onCopy(self, evt):
-		if gui.messageBox(
-			# Translators: the label of a message box dialog.
-			_("Do you want to copy shortened URL to the clipboard?"),
-			# Translators: the title of a message box dialog.
-			_("Copy shortened URL"),
-			wx.YES | wx.NO | wx.CANCEL | wx.ICON_QUESTION
-		) == wx.YES:
-			shortenUrl = self._urls[self.filteredItems[self.sel]].shortenedUrl
-			api.copyToClip(shortenUrl)
-			self.urlsList.SetFocus()
+		shortenUrl = self._urls[self.filteredItems[self.sel]].shortenedUrl
+		if api.copyToClip(shortenUrl):
+			core.callLater(100, ui.message, translate("Copied"))
+		self.urlsList.SetFocus()
 
 	def onNew(self, evt):
-		# Translators: The label of a field to enter an address for a new shortened URL.
-		with wx.TextEntryDialog(
-			# Translators: Label of a dialog.
-			self, _("URL to shorten"),
-			# Translators: The title of a dialog to shorten an URL.
-			_("Shorten URL")
-		) as d:
-			if d.ShowModal() == wx.ID_CANCEL:
-				self.urlsList.SetFocus()
-				return
-		originalUrls = [url.name for url in self._urls]
-		if d.Value in originalUrls:
+		# Translators: The title of a dialog.
+		newUrlDialog = NewUrlDialog(self, title=_("Shorten URL"))
+		if newUrlDialog.ShowModal() == wx.ID_CANCEL:
 			self.urlsList.SetFocus()
 			return
-		urlMetadata = self.shortenUrl(d.Value)
+		originalUrls = [url.originalUrl for url in self._urls]
+		if newUrlDialog.url in originalUrls:
+			self.urlsList.SetFocus()
+			return
+		urlMetadata = self.shortenUrl(newUrlDialog.url)
+		if newUrlDialog.name:
+			urlMetadata.name = newUrlDialog.name
 		self._urls.append(urlMetadata)
 		try:
 			with open(URLS_PATH, "wb") as f:
@@ -202,15 +227,17 @@ class UrlsDialog(wx.Dialog):
 		self.urlsList.SetFocus()
 
 	def onDelete(self, evt):
+		url = self._urls[self.filteredItems[self.sel]]
 		if gui.messageBox(
 			# Translators: The confirmation prompt displayed when the user requests to delete an URL.
-			_("Are you sure you want to delete this URL? This cannot be undone."),
+			_("Are you sure you want to delete this URL: %s?" % url.name),
 			# Message translated in NVDA core.
 			translate("Confirm Deletion"),
 			wx.YES | wx.NO | wx.ICON_QUESTION, self
 		) == wx.NO:
 			self.urlsList.SetFocus()
 			return
+
 		del self._urls[self.filteredItems[self.sel]]
 		try:
 			with open(URLS_PATH, "wb") as f:
