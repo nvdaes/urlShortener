@@ -206,6 +206,7 @@ class UrlsDialog(wx.Dialog):
 		self.stringSel = self.urlsList.GetString(self.sel)
 		self.renameButton.Enabled = self.sel >= 0
 		self.deleteButton.Enabled = (self.sel >= 0 and self.urlsList.Count > 1)
+		self.removeSettingsButton.Enabled = os.path.isdir(ADDON_CONFIG_PATH)
 
 	def onCopy(self, evt):
 		shortenUrl = self._urls[self.filteredItems[self.sel]].shortenedUrl
