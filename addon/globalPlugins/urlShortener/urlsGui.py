@@ -316,6 +316,7 @@ class UrlsDialog(wx.Dialog):
 			self.urlsList.SetFocus()
 			return
 		shutil.rmtree(ADDON_CONFIG_PATH, ignore_errors=True)
+		self.onUrlsListChoice(None)
 		self.urlsList.SetFocus()
 
 	def onClose(self, evt):
