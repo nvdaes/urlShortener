@@ -231,7 +231,7 @@ class UrlsDialog(wx.Dialog):
 			urlMetadata.name = newUrlDialog.name
 		self._urls.append(urlMetadata)
 		jsonUrls = [asdict(url) for url in self._urls]
-		if not os.isdir(ADDON_CONFIG_PATH):
+		if not os.path.isdir(ADDON_CONFIG_PATH):
 			os.makedirs(ADDON_CONFIG_PATH)
 		try:
 			with open(URLS_PATH, "wt") as f:
@@ -292,7 +292,7 @@ class UrlsDialog(wx.Dialog):
 		newName = d.GetValue()
 		self._urls[self.filteredItems[self.sel]].name = newName
 		jsonUrls = [asdict(url) for url in self._urls]
-		if not os.isdir(ADDON_CONFIG_PATH):
+		if not os.path.isdir(ADDON_CONFIG_PATH):
 			os.makedirs(ADDON_CONFIG_PATH)
 		try:
 			with open(URLS_PATH, "wt") as f:
