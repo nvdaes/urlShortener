@@ -123,7 +123,7 @@ class UrlsDialog(wx.Dialog):
 		buttonHelper = guiHelper.ButtonHelper(wx.VERTICAL)
 
 		# Translators: The label of a button to copy the URL.
-		self.copyButton = buttonHelper.addButton(self, label=_("C&opy shortened URL..."))
+		self.copyButton = buttonHelper.addButton(self, label=_("C&opy shortened URL"))
 		self.AffirmativeId = self.copyButton.Id
 		self.copyButton.SetDefault()
 		self.copyButton.Bind(wx.EVT_BUTTON, self.onCopy)
