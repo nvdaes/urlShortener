@@ -1,8 +1,8 @@
 # URL Shortener #
 
 * Author: Noelia Ruiz Martínez
-* Download [latest stable version][1]
-* Download [latest beta version][2]
+* Download [latest stable version][1] (compatible with NVDA 2023.1 and beyond)
+* Download [latest beta version][2] (compatible with NVDA 2023.1 and beyond)
 
 This add-on is used to shorten URLs from NVDA through [is.gd][3].
 
