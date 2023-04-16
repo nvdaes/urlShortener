@@ -97,6 +97,7 @@ class UrlsDialog(wx.Dialog):
 		# Translators: Label of a dialog (message translated in NVDA's core in different contexts).
 		searchTextLabel = _("&Filter by:")
 		self.searchTextEdit = sHelper.addLabeledControl(searchTextLabel, wx.TextCtrl)
+		self.searchTextEdit.Bind(wx.EVT_TEXT, self.onSearchEditTextChange)
 
 		urlsListGroupSizer = wx.StaticBoxSizer(wx.StaticBox(self), wx.HORIZONTAL)
 		urlsListGroupContents = wx.BoxSizer(wx.HORIZONTAL)
@@ -116,16 +117,13 @@ class UrlsDialog(wx.Dialog):
 
 		changeUrlsSizer.Add(self.urlsList, proportion=1.0)
 		changeUrlsSizer.AddSpacer(guiHelper.SPACE_BETWEEN_BUTTONS_VERTICAL)
-
 		urlsListGroupContents.Add(changeUrlsSizer, flag=wx.EXPAND)
 		urlsListGroupContents.AddSpacer(guiHelper.SPACE_BETWEEN_ASSOCIATED_CONTROL_HORIZONTAL)
-
-		self.searchTextEdit.Bind(wx.EVT_TEXT, self.onSearchEditTextChange)
 
 		buttonHelper = guiHelper.ButtonHelper(wx.VERTICAL)
 
 		# Translators: The label of a button to copy the URL.
-		self.copyButton = buttonHelper.addButton(self, label=_("&Copy shortened URL..."))
+		self.copyButton = buttonHelper.addButton(self, label=_("C&opy shortened URL..."))
 		self.AffirmativeId = self.copyButton.Id
 		self.copyButton.SetDefault()
 		self.copyButton.Bind(wx.EVT_BUTTON, self.onCopy)
@@ -143,7 +141,7 @@ class UrlsDialog(wx.Dialog):
 		self.deleteButton.Bind(wx.EVT_BUTTON, self.onDelete)
 
 		# Translators: The label of a button to delete settings folder.
-		self.removeSettingsButton = buttonHelper.addButton(self, label=_("&Remove saved URLs..."))
+		self.removeSettingsButton = buttonHelper.addButton(self, label=_("Remove &saved URLs..."))
 		self.removeSettingsButton.Bind(wx.EVT_BUTTON, self.onRemoveSettings)
 
 		urlsListGroupContents.Add(buttonHelper.sizer)
