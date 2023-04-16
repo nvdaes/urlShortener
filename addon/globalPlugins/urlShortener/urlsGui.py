@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 
-# Link Shortener: Plugin to shorten URLs with NVDA
+# URL Shortener: Plugin to shorten URLs with NVDA
 # Copyright (C) 2023 Noelia Ruiz Martínez
 # Released under GPL 2
 
