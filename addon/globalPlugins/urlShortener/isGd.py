@@ -15,10 +15,10 @@ from logHandler import log
 
 class UrlShortener(ABC):
 
-	def __init__(self, originalUrl: str):
+	def __init__(self, originalUrl: str, *args, **kwargs):
 		self.originalUrl = originalUrl
 		self.shortenedUrl = None
-		self.shortenUrl()
+		self.shortenUrl(*args, **kwargs)
 
 	def getOriginalUrl(self) -> str:
 		return self.originalUrl
@@ -27,19 +27,22 @@ class UrlShortener(ABC):
 		return self.shortenedUrl
 
 	@abstractmethod
-	def shortenUrl(self):
+	def shortenUrl(self, *args, **kwargs):
 		pass
 
 
 class IsGd(UrlShortener):
 
-	def shortenUrl(self) -> Optional[str]:
+	def shortenUrl(self, customUrl: Optional[str] = None) -> Optional[str]:
 		url = self.originalUrl
 		quotedUrl = quote(url)
 		headers = {
 			'User-Agent': 'Mozilla'
 		}
-		apiUrl = f"https://is.gd/create.php?format=simple&url={quotedUrl}"
+		if customUrl and len(customUrl) >= 5 and len(customUrl) <= 30:
+			apiUrl = f"https://is.gd/create.php?format=simple&url={quotedUrl}&shorturl={customUrl}"
+		else:
+			apiUrl = f"https://is.gd/create.php?format=simple&url={quotedUrl}"
 		try:
 			resp = urlopen(Request(apiUrl, headers=headers))
 			self.shortenedUrl = resp.read().decode("utf-8")
