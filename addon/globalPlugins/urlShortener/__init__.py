@@ -39,7 +39,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	def terminate(self):
 		try:
-			self.toolsMenu .Remove(self.feedsListItem)
+			self.toolsMenu .Remove(self.urlsListItem)
 		except Exception:
 			pass
 

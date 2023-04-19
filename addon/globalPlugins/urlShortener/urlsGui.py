@@ -9,6 +9,7 @@ import os
 import re
 import shutil
 import wx
+
 from dataclasses import asdict
 
 import api
@@ -49,6 +50,10 @@ class NewUrlDialog(wx.Dialog):
 		nameLabelText = _("&Name")
 		self.nameTextCtrl = sHelper.addLabeledControl(nameLabelText, wx.TextCtrl)
 
+		# Translators: The label of a field to enter a custom URL.
+		customUrlLabelText = _("Cus&tom URL")
+		self.customUrlTextCtrl = sHelper.addLabeledControl(customUrlLabelText, wx.TextCtrl)
+
 		sHelper.addDialogDismissButtons(wx.OK | wx.CANCEL, separated=True)
 		mainSizer.Add(sHelper.sizer, border=guiHelper.BORDER_FOR_DIALOGS, flag=wx.ALL)
 		mainSizer.Fit(self)
@@ -59,6 +64,7 @@ class NewUrlDialog(wx.Dialog):
 	def onOk(self, evt):
 		self.url = self.urlTextCtrl.GetValue()
 		self.name = self.nameTextCtrl.GetValue()
+		self.customUrl = self.customUrlTextCtrl.GetValue()
 		evt.Skip()
 
 
@@ -165,9 +171,13 @@ class UrlsDialog(wx.Dialog):
 	def __del__(self):
 		UrlsDialog._instance = None
 
-	def shortenUrl(self, address):
+	def shortenUrl(self, address, customUrl):
 		try:
-			url = IsGd(address).getShortenedUrl()
+			url = IsGd(address, customUrl).getShortenedUrl()
+			if not url:
+				# Translators: Message presented when a custom URL cannot be added.
+				core.callLater(100, ui.message, _("Cannot add this custom URL: %s") % customUrl)
+				return
 		except Exception as e:
 			wx.CallAfter(
 				gui.messageBox,
@@ -219,10 +229,11 @@ class UrlsDialog(wx.Dialog):
 			self.urlsList.SetFocus()
 			return
 		originalUrls = [url.originalUrl for url in self._urls]
-		if newUrlDialog.url in originalUrls:
+		customUrls = [url.shortenedUrl.split("/")[-1] for url in self._urls]
+		if newUrlDialog.url in originalUrls or (newUrlDialog.customUrl and newUrlDialog.customUrl in customUrls):
 			self.urlsList.SetFocus()
 			return
-		urlMetadata = self.shortenUrl(newUrlDialog.url)
+		urlMetadata = self.shortenUrl(newUrlDialog.url, newUrlDialog.customUrl)
 		if not urlMetadata.shortenedUrl:
 			self.urlsList.SetFocus()
 			return
