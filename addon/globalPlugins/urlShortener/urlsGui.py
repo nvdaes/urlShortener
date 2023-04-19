@@ -224,11 +224,11 @@ class UrlsDialog(wx.Dialog):
 			self.urlsList.SetFocus()
 			return
 		originalUrls = [url.originalUrl for url in self._urls]
-		if newUrlDialog.url in originalUrls:
+		customUrls = [url.shortenedUrl.split("/")[-1] for url in self._urls]
+		if newUrlDialog.url in originalUrls or (newUrlDialog.customUrl and newUrlDialog.customUrl in customUrls):
 			self.urlsList.SetFocus()
 			return
 		urlMetadata = self.shortenUrl(newUrlDialog.url, newUrlDialog.customUrl)
-		api.copyToClip(newUrlDialog.customUrl)
 		if not urlMetadata.shortenedUrl:
 			self.urlsList.SetFocus()
 			return
