@@ -9,6 +9,7 @@ import os
 import re
 import shutil
 import wx
+
 from dataclasses import asdict
 
 import api
@@ -173,6 +174,10 @@ class UrlsDialog(wx.Dialog):
 	def shortenUrl(self, address, customUrl):
 		try:
 			url = IsGd(address, customUrl).getShortenedUrl()
+			if not url:
+				# Translators: Message presented when a custom URL cannot be added.
+				core.callLater(100, ui.message, _("Cannot add this custom URL: %s") % customUrl)
+				return
 		except Exception as e:
 			wx.CallAfter(
 				gui.messageBox,
