@@ -14,7 +14,7 @@ import addonHandler
 
 from .urlsGui import UrlsDialog
 
-addonHandler.initTranslation
+addonHandler.initTranslation()
 
 ADDON_SUMMARY = addonHandler.getCodeAddon().manifest["summary"]
 

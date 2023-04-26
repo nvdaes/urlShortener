@@ -12,6 +12,7 @@ import wx
 
 from dataclasses import asdict
 
+import addonHandler
 import api
 import core
 import globalVars
@@ -22,6 +23,8 @@ from gui import guiHelper
 
 from .isGd import IsGd, UrlMetadata
 from .skipTranslation import translate
+
+addonHandler.initTranslation()
 
 CONFIG_PATH = globalVars.appArgs.configPath
 ADDON_CONFIG_PATH = os.path.join(CONFIG_PATH, "urlShortener")
