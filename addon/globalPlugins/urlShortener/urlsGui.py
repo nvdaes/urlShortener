@@ -163,7 +163,7 @@ class UrlsDialog(wx.Dialog):
 			return
 		if customUrl in customUrls:
 			# Translators: Message presented when a custom URL is already saved.
-			core.callLater(100, ui.message, _("This custom URL was already used: %s. Please try with a different subfix.") % customUrl)
+			core.callLater(100, ui.message, _("This custom URL was already used. Try with a different subfix."))
 			self.customUrlTextCtrl.SetFocus()
 			return
 		if customUrl and (len(customUrl) < 5 or len(customUrl) > 30):
@@ -176,7 +176,7 @@ class UrlsDialog(wx.Dialog):
 			if not url:
 				if customUrl:
 					# Translators: Message presented when a custom URL cannot be added.
-					core.callLater(100, ui.message, _("This custom URL is not available. Please try with a different subfix."))
+					core.callLater(100, ui.message, _("This custom URL is not available. Try with a different subfix."))
 					self.customUrlTextCtrl.SetFocus()
 				else:
 					# Translators: Message presented when an URL cannot be shortened.
