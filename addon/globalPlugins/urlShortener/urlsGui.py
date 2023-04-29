@@ -167,8 +167,10 @@ class UrlsDialog(wx.Dialog):
 			self.customUrlTextCtrl.SetFocus()
 			return
 		if customUrl and (len(customUrl) < 5 or len(customUrl) > 30):
-			# Translators: Message presented when a custom URL has a wrong length.
-			core.callLater(100, ui.message, _("This custom URL has %d characters. Length must be between 5 and 30.") % len(customUrl))
+			core.callLater(
+				# Translators: Message presented when a custom URL has a wrong length.
+				100, ui.message, _("This custom URL has %d characters. Length must be between 5 and 30.") % len(customUrl)
+			)
 			self.customUrlTextCtrl.SetFocus()
 			return
 		try:
