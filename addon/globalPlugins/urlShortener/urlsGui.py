@@ -35,42 +35,6 @@ def getUrlMetadataName(urlMetadata):
 	return urlMetadata.name
 
 
-class NewUrlDialog(wx.Dialog):
-
-	# Translators: The title of a dialog.
-	def __init__(self, parent, title=_("&Rename URL")):
-		# Translators: The title of a dialog.
-		super(NewUrlDialog, self).__init__(parent, title=title)
-
-		mainSizer = wx.BoxSizer(wx.VERTICAL)
-		sHelper = guiHelper.BoxSizerHelper(self, orientation=wx.VERTICAL)
-
-		# Translators: The label of a field to enter an address for a new shortened URL.
-		urlLabelText = _("&URL")
-		self.urlTextCtrl = sHelper.addLabeledControl(urlLabelText, wx.TextCtrl)
-
-		# Translators: The label of a field to enter the name for a new URL.
-		nameLabelText = _("&Name")
-		self.nameTextCtrl = sHelper.addLabeledControl(nameLabelText, wx.TextCtrl)
-
-		# Translators: The label of a field to enter a custom URL.
-		customUrlLabelText = _("Cus&tom URL")
-		self.customUrlTextCtrl = sHelper.addLabeledControl(customUrlLabelText, wx.TextCtrl)
-
-		sHelper.addDialogDismissButtons(wx.OK | wx.CANCEL, separated=True)
-		mainSizer.Add(sHelper.sizer, border=guiHelper.BORDER_FOR_DIALOGS, flag=wx.ALL)
-		mainSizer.Fit(self)
-		self.SetSizer(mainSizer)
-		self.urlTextCtrl.SetFocus()
-		self.Bind(wx.EVT_BUTTON, self.onOk, id=wx.ID_OK)
-
-	def onOk(self, evt):
-		self.url = self.urlTextCtrl.GetValue()
-		self.name = self.nameTextCtrl.GetValue()
-		self.customUrl = self.customUrlTextCtrl.GetValue()
-		evt.Skip()
-
-
 class UrlsDialog(wx.Dialog):
 
 	_instance = None
@@ -137,8 +101,20 @@ class UrlsDialog(wx.Dialog):
 		self.copyButton.SetDefault()
 		self.copyButton.Bind(wx.EVT_BUTTON, self.onCopy)
 
+		# Translators: The label of a field to enter an address for a new shortened URL.
+		urlLabelText = _("New &URL")
+		self.urlTextCtrl = sHelper.addLabeledControl(urlLabelText, wx.TextCtrl)
+
+		# Translators: The label of a field to enter the name for a new URL.
+		nameLabelText = _("&Name for new URL")
+		self.nameTextCtrl = sHelper.addLabeledControl(nameLabelText, wx.TextCtrl)
+
+		# Translators: The label of a field to enter a custom URL.
+		customUrlLabelText = _("Cus&tom URL")
+		self.customUrlTextCtrl = sHelper.addLabeledControl(customUrlLabelText, wx.TextCtrl)
+
 		# Translators: The label of a button to add a new URL.
-		newButton = buttonHelper.addButton(self, label=_("&New..."))
+		newButton = buttonHelper.addButton(self, label=_("Short&en New URL"))
 		newButton.Bind(wx.EVT_BUTTON, self.onNew)
 
 		# Translators: The label of a button to rename an URL.
@@ -175,11 +151,37 @@ class UrlsDialog(wx.Dialog):
 		UrlsDialog._instance = None
 
 	def shortenUrl(self, address, customUrl):
+		name = self.nameTextCtrl.GetValue()
+		if not name:
+			name = address
+		originalUrls = [url.originalUrl for url in self._urls]
+		customUrls = [url.shortenedUrl.split("/")[-1] for url in self._urls]
+		if address in originalUrls:
+			# Translators: Message presented when an URL was already saved.
+			core.callLater(100, ui.message, _("This URL was already saved."))
+			self.urlsList.SetFocus()
+			return
+		if customUrl in customUrls:
+			# Translators: Message presented when a custom URL is already saved.
+			core.callLater(100, ui.message, _("This custom URL was already used: %s. Please try with a different subfix.") % customUrl)
+			self.customUrlTextCtrl.SetFocus()
+			return
+		if customUrl and (len(customUrl) < 5 or len(customUrl) > 30):
+			# Translators: Message presented when a custom URL has a wrong length.
+			core.callLater(100, ui.message, _("This custom URL has %d characters. Length must be between 5 and 30.") % len(customUrl))
+			self.customUrlTextCtrl.SetFocus()
+			return
 		try:
 			url = IsGd(address, customUrl).getShortenedUrl()
 			if not url:
-				# Translators: Message presented when a custom URL cannot be added.
-				core.callLater(100, ui.message, _("Cannot add this custom URL: %s") % customUrl)
+				if customUrl:
+					# Translators: Message presented when a custom URL cannot be added.
+					core.callLater(100, ui.message, _("This custom URL is not available. Please try with a different subfix."))
+					self.customUrlTextCtrl.SetFocus()
+				else:
+					# Translators: Message presented when an URL cannot be shortened.
+					core.callLater(100, ui.message, _("cannot shorten URL. Check Internet connectivity."))
+					self.urlTextCtrl.SetFocus()
 				return
 		except Exception as e:
 			wx.CallAfter(
@@ -191,8 +193,26 @@ class UrlsDialog(wx.Dialog):
 				wx.OK | wx.ICON_ERROR
 			)
 			raise e
-		urlMetadata = UrlMetadata(address, address, url)
-		return urlMetadata
+		urlMetadata = UrlMetadata(name, address, url)
+		self._urls.append(urlMetadata)
+		jsonUrls = [asdict(url) for url in self._urls]
+		if not os.path.isdir(ADDON_CONFIG_PATH):
+			os.makedirs(ADDON_CONFIG_PATH)
+		try:
+			with open(URLS_PATH, "wt") as f:
+				json.dump(jsonUrls, f, indent="\t")
+		except Exception as e:
+			raise e
+		self.urlsList.Append(name)
+		self.choices.append(name)
+		newItem = self.filteredItems[-1] + 1
+		self.filteredItems.append(newItem)
+		self.urlsList.Selection = self.urlsList.Count - 1
+		self.onUrlsListChoice(None)
+		self.urlsList.SetFocus()
+		self.urlTextCtrl.SetValue("")
+		self.nameTextCtrl.SetValue("")
+		self.customUrlTextCtrl.SetValue("")
 
 	def onSearchEditTextChange(self, evt):
 		self.urlsList.Clear()
@@ -226,39 +246,9 @@ class UrlsDialog(wx.Dialog):
 		self.urlsList.SetFocus()
 
 	def onNew(self, evt):
-		# Translators: The title of a dialog.
-		newUrlDialog = NewUrlDialog(self, title=_("Shorten URL"))
-		if newUrlDialog.ShowModal() == wx.ID_CANCEL:
-			self.urlsList.SetFocus()
-			return
-		originalUrls = [url.originalUrl for url in self._urls]
-		customUrls = [url.shortenedUrl.split("/")[-1] for url in self._urls]
-		if newUrlDialog.url in originalUrls or (newUrlDialog.customUrl and newUrlDialog.customUrl in customUrls):
-			self.urlsList.SetFocus()
-			return
-		urlMetadata = self.shortenUrl(newUrlDialog.url, newUrlDialog.customUrl)
-		if not urlMetadata.shortenedUrl:
-			self.urlsList.SetFocus()
-			return
-		if newUrlDialog.name:
-			urlMetadata.name = newUrlDialog.name
-		self._urls.append(urlMetadata)
-		jsonUrls = [asdict(url) for url in self._urls]
-		if not os.path.isdir(ADDON_CONFIG_PATH):
-			os.makedirs(ADDON_CONFIG_PATH)
-		try:
-			with open(URLS_PATH, "wt") as f:
-				json.dump(jsonUrls, f, indent="\t")
-		except Exception as e:
-			raise e
-		name = urlMetadata.name
-		self.urlsList.Append(name)
-		self.choices.append(name)
-		newItem = self.filteredItems[-1] + 1
-		self.filteredItems.append(newItem)
-		self.urlsList.Selection = self.urlsList.Count - 1
-		self.onUrlsListChoice(None)
-		self.urlsList.SetFocus()
+		address = self.urlTextCtrl.GetValue()
+		customUrl = self.customUrlTextCtrl.GetValue()
+		self.shortenUrl(address, customUrl)
 
 	def onDelete(self, evt):
 		url = self._urls[self.filteredItems[self.sel]]
