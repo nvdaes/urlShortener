@@ -104,6 +104,7 @@ class UrlsDialog(wx.Dialog):
 		# Translators: The label of a field to enter an address for a new shortened URL.
 		urlLabelText = _("New &URL")
 		self.urlTextCtrl = sHelper.addLabeledControl(urlLabelText, wx.TextCtrl)
+		self.urlTextCtrl.Bind(wx.EVT_TEXT, self.onUrlTextCtrlChange)
 
 		# Translators: The label of a field to enter the name for a new URL.
 		nameLabelText = _("&Name for new URL")
@@ -114,8 +115,9 @@ class UrlsDialog(wx.Dialog):
 		self.customUrlTextCtrl = sHelper.addLabeledControl(customUrlLabelText, wx.TextCtrl)
 
 		# Translators: The label of a button to add a new URL.
-		newButton = buttonHelper.addButton(self, label=_("Short&en New URL"))
-		newButton.Bind(wx.EVT_BUTTON, self.onNew)
+		self.newButton = buttonHelper.addButton(self, label=_("Short&en New URL"))
+		self.newButton.Bind(wx.EVT_BUTTON, self.onNew)
+		self.newButton.Disable()
 
 		# Translators: The label of a button to rename an URL.
 		self.renameButton = buttonHelper.addButton(self, label=_("&Rename..."))
@@ -246,6 +248,13 @@ class UrlsDialog(wx.Dialog):
 		if api.copyToClip(shortenUrl):
 			core.callLater(100, ui.message, translate("Copied"))
 		self.urlsList.SetFocus()
+
+	def onUrlTextCtrlChange(self, evt):
+		urlToShorten = self.urlTextCtrl.Value
+		if urlToShorten:
+			self.newButton.Enable()
+		else:
+			self.newButton.Disable()
 
 	def onNew(self, evt):
 		address = self.urlTextCtrl.GetValue()
