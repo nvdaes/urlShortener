@@ -22,7 +22,7 @@ The Shorten URL dialog includes the following controls:
 * Remove saved URLs: opens a dialog to remove the saved URLs from the configuration folder.
 * Close.
 
-## Changes for 4.0.0 ##
+## Changes for 5.0.0 ##
 
 * The new URL dialog has been replaced with a set of controls in the main dialog, so that the focus can be placed in the relevant field to fix possible errors.
 
