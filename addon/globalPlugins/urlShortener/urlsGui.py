@@ -14,7 +14,6 @@ from dataclasses import asdict
 
 import addonHandler
 import api
-import core
 import globalVars
 import ui
 from logHandler import log
@@ -160,19 +159,17 @@ class UrlsDialog(wx.Dialog):
 		customUrls = [url.shortenedUrl.split("/")[-1] for url in self._urls]
 		if address in originalUrls:
 			# Translators: Message presented when an URL was already saved.
-			core.callLater(100, ui.message, _("This URL was already saved."))
+			ui.message(_("This URL was already saved."))
 			self.urlsList.SetFocus()
 			return
 		if customUrl in customUrls:
 			# Translators: Message presented when a custom URL is already saved.
-			core.callLater(100, ui.message, _("This custom URL was already used. Try with a different subfix."))
+			ui.message(_("This custom URL was already used. Try a different one."))
 			self.customUrlTextCtrl.SetFocus()
 			return
 		if customUrl and (len(customUrl) < 5 or len(customUrl) > 30):
-			core.callLater(
-				# Translators: Message presented when a custom URL has a wrong length.
-				100, ui.message, _("This custom URL has %d characters. Length must be between 5 and 30.") % len(customUrl)
-			)
+			# Translators: Message presented when a custom URL has a wrong length.
+			ui.message(_("This custom URL has %d characters. Length must be between 5 and 30." % len(customUrl)))
 			self.customUrlTextCtrl.SetFocus()
 			return
 		try:
@@ -180,11 +177,11 @@ class UrlsDialog(wx.Dialog):
 			if not url:
 				if customUrl:
 					# Translators: Message presented when a custom URL cannot be added.
-					core.callLater(100, ui.message, _("This custom URL is not available. Try with a different subfix."))
+					ui.message(_("This custom URL is not available. Try a different one."))
 					self.customUrlTextCtrl.SetFocus()
 				else:
 					# Translators: Message presented when an URL cannot be shortened.
-					core.callLater(100, ui.message, _("cannot shorten URL. Check Internet connectivity."))
+					ui.message(_("Cannot shorten URL. Check Internet connectivity."))
 					self.urlTextCtrl.SetFocus()
 				return
 		except Exception as e:
@@ -246,7 +243,7 @@ class UrlsDialog(wx.Dialog):
 	def onCopy(self, evt):
 		shortenUrl = self._urls[self.filteredItems[self.sel]].shortenedUrl
 		if api.copyToClip(shortenUrl):
-			core.callLater(100, ui.message, translate("Copied"))
+			ui.message(translate("Copied"))
 		self.urlsList.SetFocus()
 
 	def onUrlTextCtrlChange(self, evt):
