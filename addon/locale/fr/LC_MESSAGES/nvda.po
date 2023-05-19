@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: urlShortener 2.0.0\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2023-04-21 21:10+0000\n"
-"PO-Revision-Date: 2023-04-22 17:44+0200\n"
+"PO-Revision-Date: 2023-05-13 13:41+0200\n"
+"Last-Translator: Rémy Ruiz <remyruiz@gmail.com>\n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Rémy Ruiz <remyruiz@gmail.com>\n"
-"Language-Team: \n"
 "X-Generator: Poedit 1.8.8\n"
 
 #. Translators: the name of a menu item.
@@ -24,22 +24,6 @@ msgstr "Ré&duire URL..."
 #. Translators: message presented in input mode.
 msgid "Activates the Shorten URL dialog."
 msgstr "Activer la boîte de dialogue Réduire URL."
-
-#. Translators: The title of a dialog.
-msgid "&Rename URL"
-msgstr "&Renommer l'URL"
-
-#. Translators: The label of a field to enter an address for a new shortened URL.
-msgid "&URL"
-msgstr "&URL"
-
-#. Translators: The label of a field to enter the name for a new URL.
-msgid "&Name"
-msgstr "&Nom"
-
-#. Translators: The label of a field to enter a custom URL.
-msgid "Cus&tom URL"
-msgstr "URL &personnalisée"
 
 #. Translators: The title of a dialog.
 msgid "urls"
@@ -53,9 +37,21 @@ msgstr "&Filtrer par:"
 msgid "C&opy shortened URL"
 msgstr "C&opier l'URL réduite"
 
+#. Translators: The label of a field to enter an address for a new shortened URL.
+msgid "New &URL"
+msgstr "Nouvelle &URL"
+
+#. Translators: The label of a field to enter the name for a new URL.
+msgid "&Name for new URL"
+msgstr "&Nom pour une nouvelle URL"
+
+#. Translators: The label of a field to enter a custom URL.
+msgid "Cus&tom URL"
+msgstr "URL &personnalisée"
+
 #. Translators: The label of a button to add a new URL.
-msgid "&New..."
-msgstr "&Nouvelle..."
+msgid "Short&en New URL"
+msgstr "Réduir&e nouvelle URL"
 
 #. Translators: The label of a button to rename an URL.
 msgid "&Rename..."
@@ -69,10 +65,26 @@ msgstr "Suppr&imer..."
 msgid "Remove &saved URLs..."
 msgstr "Suppri&mer les URL sauvegardés..."
 
-#. Translators: Message presented when a custom URL cannot be added.
+#. Translators: Message presented when an URL was already saved.
+msgid "This URL was already saved."
+msgstr "Cette URL a déjà été sauvegardée."
+
+#. Translators: Message presented when a custom URL is already saved.
+msgid "This custom URL was already used. Try a different one."
+msgstr "Cette URL personnalisée a déjà été utilisée. Essayez une autre."
+
+#. Translators: Message presented when a custom URL has a wrong length.
 #, python-format
-msgid "Cannot add this custom URL: %s"
-msgstr "Impossible d'ajouter cette URL personnalisée: %s"
+msgid "This custom URL has %d characters. Length must be between 5 and 30."
+msgstr "Cette URL personnalisée a %d caractères. La longueur doit être comprise entre 5 et 30."
+
+#. Translators: Message presented when a custom URL cannot be added.
+msgid "This custom URL is not available. Try a different one."
+msgstr "Cette URL personnalisée n'est pas disponible. Essayez une autre."
+
+#. Translators: Message presented when an URL cannot be shortened.
+msgid "Cannot shorten URL. Check Internet connectivity."
+msgstr "Impossible de réduire l'URL. Vérifiez la connectivité Internet."
 
 #. Translators: Message presented when a shortened URL cannot be added.
 #, python-format
@@ -82,10 +94,6 @@ msgstr "Impossible d'ajouter l'URL: %s"
 #. Translators: Error message.
 msgid "Error"
 msgstr "Erreur"
-
-#. Translators: The title of a dialog.
-msgid "Shorten URL"
-msgstr "Réduire URL"
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format
@@ -114,3 +122,15 @@ msgstr "Réduire URL"
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 msgid "Shorten URLs through NVDA."
 msgstr "Réduire les URL via NVDA."
+
+#~ msgid "&Rename URL"
+#~ msgstr "&Renommer l'URL"
+
+#~ msgid "&Name"
+#~ msgstr "&Nom"
+
+#~ msgid "&New..."
+#~ msgstr "&Nouvelle..."
+
+#~ msgid "Cannot add this custom URL: %s"
+#~ msgstr "Impossible d'ajouter cette URL personnalisée: %s"
