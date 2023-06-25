@@ -18,7 +18,7 @@ import globalVars
 import ui
 from logHandler import log
 import gui
-from gui import guiHelper
+from gui import guiHelper, messageBox
 
 from .isGd import IsGd, UrlMetadata
 from .skipTranslation import translate
@@ -99,6 +99,14 @@ class UrlsDialog(wx.Dialog):
 		self.AffirmativeId = self.copyButton.Id
 		self.copyButton.SetDefault()
 		self.copyButton.Bind(wx.EVT_BUTTON, self.onCopy)
+
+		# Translators: The label of an edit box to show more details about the selected URL.
+		detailsLabel = _("Deta&ils:")
+		detailsLabeledCtrl = gui.guiHelper.LabeledControlHelper(
+			self, detailsLabel, wx.TextCtrl,
+			style=wx.TE_MULTILINE | wx.TE_READONLY
+		)
+		self.detailsEdit = detailsLabeledCtrl.control
 
 		# Translators: The label of a field to enter an address for a new shortened URL.
 		urlLabelText = _("New &URL")
@@ -236,6 +244,15 @@ class UrlsDialog(wx.Dialog):
 		self.urlsList.Enable()
 		self.sel = self.urlsList.Selection
 		self.stringSel = self.urlsList.GetString(self.sel)
+		url = self._urls[self.filteredItems[self.sel]]
+		urlInfo = _(
+			"Original URL: {}\n"
+			"Name: {}\n"
+			"Shortened URL: {}".format(
+				url.originalUrl, url.name, url.shortenedUrl
+			)
+		)
+		self.detailsEdit.Value = urlInfo
 		self.renameButton.Enabled = self.sel >= 0
 		self.deleteButton.Enabled = (self.sel >= 0 and self.urlsList.Count > 1)
 		self.removeSettingsButton.Enabled = os.path.isdir(ADDON_CONFIG_PATH)
