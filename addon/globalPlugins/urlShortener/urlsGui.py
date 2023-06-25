@@ -18,7 +18,7 @@ import globalVars
 import ui
 from logHandler import log
 import gui
-from gui import guiHelper, messageBox
+from gui import guiHelper
 
 from .isGd import IsGd, UrlMetadata
 from .skipTranslation import translate
