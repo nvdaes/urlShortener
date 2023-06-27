@@ -245,6 +245,7 @@ class UrlsDialog(wx.Dialog):
 		self.sel = self.urlsList.Selection
 		self.stringSel = self.urlsList.GetString(self.sel)
 		url = self._urls[self.filteredItems[self.sel]]
+		# Translators: Info about the selected URL.
 		urlInfo = _(
 			"Original URL: {}\n"
 			# Translators: Info about the selected URL.
