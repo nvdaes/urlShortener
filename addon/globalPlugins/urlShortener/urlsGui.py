@@ -18,7 +18,7 @@ import globalVars
 import ui
 from logHandler import log
 import gui
-from gui import guiHelper, messageBox
+from gui import guiHelper
 
 from .isGd import IsGd, UrlMetadata
 from .skipTranslation import translate
@@ -247,6 +247,7 @@ class UrlsDialog(wx.Dialog):
 		url = self._urls[self.filteredItems[self.sel]]
 		urlInfo = _(
 			"Original URL: {}\n"
+			# Translators: Info about the selected URL.
 			"Name: {}\n"
 			"Shortened URL: {}".format(
 				url.originalUrl, url.name, url.shortenedUrl
