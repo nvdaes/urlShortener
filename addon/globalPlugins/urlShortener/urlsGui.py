@@ -18,7 +18,7 @@ import globalVars
 import ui
 from logHandler import log
 import gui
-from gui import guiHelper
+from gui import guiHelper, messageBox
 
 from .isGd import IsGd, UrlMetadata
 from .skipTranslation import translate
@@ -104,7 +104,7 @@ class UrlsDialog(wx.Dialog):
 		detailsLabel = _("Deta&ils:")
 		detailsLabeledCtrl = gui.guiHelper.LabeledControlHelper(
 			self, detailsLabel, wx.TextCtrl,
-			style=wx.TE_MULTILINE | wx.TE_READONLY
+			style=wx.TE_MULTILINE | wx.TE_READONLY | wx.TE_DONTWRAP
 		)
 		self.detailsEdit = detailsLabeledCtrl.control
 
@@ -246,7 +246,6 @@ class UrlsDialog(wx.Dialog):
 		self.stringSel = self.urlsList.GetString(self.sel)
 		url = self._urls[self.filteredItems[self.sel]]
 		urlInfo = _(
-			# Translators: Details about the selected URL.
 			"Original URL: {}\n"
 			"Name: {}\n"
 			"Shortened URL: {}".format(
