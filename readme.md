@@ -16,11 +16,16 @@ The Shorten URL dialog includes the following controls:
 
 * A list to select one of the saved URLs. From this list, Press shift+tab to search, and tab to press one of the following buttons.
 * Copy shortened URL. This can also be activated by pressing Enter from the URLs list.
+* A readonly box showing details about the selected URL.
 * Set of controls to shorten a new URL: Provide the new URL; optionally, you can set a display name and a custom subfix for the shortened URL. Finally, press the Shorten URL button.
 * Rename: opens a dialog to provide a new name to display the selected URL on the list.
 * Delete: opens a dialog to delete the selected URL.
 * Remove saved URLs: opens a dialog to remove the saved URLs from the configuration folder.
 * Close.
+
+## Changes for 8.0.0 ##
+
+* Added a readonly box with details about the selected URL.
 
 ## Changes for 5.0.0 ##
 
