@@ -100,6 +100,14 @@ class UrlsDialog(wx.Dialog):
 		self.copyButton.SetDefault()
 		self.copyButton.Bind(wx.EVT_BUTTON, self.onCopy)
 
+		# Translators: The label of an edit box to show more details about the selected URL.
+		detailsLabel = _("Deta&ils:")
+		detailsLabeledCtrl = gui.guiHelper.LabeledControlHelper(
+			self, detailsLabel, wx.TextCtrl,
+			style=wx.TE_MULTILINE | wx.TE_READONLY | wx.TE_DONTWRAP
+		)
+		self.detailsEdit = detailsLabeledCtrl.control
+
 		# Translators: The label of a field to enter an address for a new shortened URL.
 		urlLabelText = _("New &URL")
 		self.urlTextCtrl = sHelper.addLabeledControl(urlLabelText, wx.TextCtrl)
@@ -236,6 +244,16 @@ class UrlsDialog(wx.Dialog):
 		self.urlsList.Enable()
 		self.sel = self.urlsList.Selection
 		self.stringSel = self.urlsList.GetString(self.sel)
+		url = self._urls[self.filteredItems[self.sel]]
+		urlInfo = _(
+			# Translators: Info about the selected URL.
+			"Original URL: {}\n"
+			"Name: {}\n"
+			"Shortened URL: {}".format(
+				url.originalUrl, url.name, url.shortenedUrl
+			)
+		)
+		self.detailsEdit.Value = urlInfo
 		self.renameButton.Enabled = self.sel >= 0
 		self.deleteButton.Enabled = (self.sel >= 0 and self.urlsList.Count > 1)
 		self.removeSettingsButton.Enabled = os.path.isdir(ADDON_CONFIG_PATH)
