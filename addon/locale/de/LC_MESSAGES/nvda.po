@@ -37,6 +37,10 @@ msgstr "&Filtern nach:"
 msgid "C&opy shortened URL"
 msgstr "Verkürzte URL &kopieren"
 
+#. Translators: The label of an edit box to show more details about the selected URL.
+msgid "Deta&ils:"
+msgstr ""
+
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
 msgstr "Neue &URL"
@@ -71,20 +75,28 @@ msgstr "Diese URL wurde bereits gespeichert."
 
 #. Translators: Message presented when a custom URL is already saved.
 msgid "This custom URL was already used. Try a different one."
-msgstr "Diese benutzerdefinierte URL wurde bereits verwendet. Versuchen Sie bitte eine andere."
+msgstr ""
+"Diese benutzerdefinierte URL wurde bereits verwendet. Versuchen Sie bitte "
+"eine andere."
 
 #. Translators: Message presented when a custom URL has a wrong length.
 #, python-format
 msgid "This custom URL has %d characters. Length must be between 5 and 30."
-msgstr "Diese benutzerdefinierte URL enthält %d Zeichen. Die Länge sollte zwischen 5 und 30 Zeichen liegen."
+msgstr ""
+"Diese benutzerdefinierte URL enthält %d Zeichen. Die Länge sollte zwischen 5 "
+"und 30 Zeichen liegen."
 
 #. Translators: Message presented when a custom URL cannot be added.
 msgid "This custom URL is not available. Try a different one."
-msgstr "Diese benutzerdefinierte URL ist nicht verfügbar. Versuchen Sie bitte eine andere."
+msgstr ""
+"Diese benutzerdefinierte URL ist nicht verfügbar. Versuchen Sie bitte eine "
+"andere."
 
 #. Translators: Message presented when an URL cannot be shortened.
 msgid "Cannot shorten URL. Check Internet connectivity."
-msgstr "Die URL konnte nicht verkürzt werden. Überprüfen Sie bitte Ihre Internetverbindung."
+msgstr ""
+"Die URL konnte nicht verkürzt werden. Überprüfen Sie bitte Ihre "
+"Internetverbindung."
 
 #. Translators: Message presented when a shortened URL cannot be added.
 #, python-format
@@ -94,6 +106,13 @@ msgstr "Die URL \"%s\" konnte nicht hinzugefügt werden"
 #. Translators: Error message.
 msgid "Error"
 msgstr "Fehler"
+
+#. Translators: Info about the selected URL.
+msgid ""
+"Original URL: {}\n"
+"Name: {}\n"
+"Shortened URL: {}"
+msgstr ""
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format
