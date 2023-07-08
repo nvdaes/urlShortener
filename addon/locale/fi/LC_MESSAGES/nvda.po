@@ -38,6 +38,10 @@ msgstr "&Suodata:"
 msgid "C&opy shortened URL"
 msgstr "K&opioi lyhennetty URL"
 
+#. Translators: The label of an edit box to show more details about the selected URL.
+msgid "Deta&ils:"
+msgstr ""
+
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
 msgstr "Uusi &URL"
@@ -96,6 +100,13 @@ msgstr "URLia ei voi lisätä: %s"
 #. Translators: Error message.
 msgid "Error"
 msgstr "Virhe"
+
+#. Translators: Info about the selected URL.
+msgid ""
+"Original URL: {}\n"
+"Name: {}\n"
+"Shortened URL: {}"
+msgstr ""
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format

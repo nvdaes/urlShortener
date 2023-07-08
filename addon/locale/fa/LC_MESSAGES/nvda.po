@@ -37,6 +37,10 @@ msgstr "&محدود کردن به:"
 msgid "C&opy shortened URL"
 msgstr "&کپی کردنِ نشانیِ اینترنتیِ کوتاه‌شده"
 
+#. Translators: The label of an edit box to show more details about the selected URL.
+msgid "Deta&ils:"
+msgstr ""
+
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
 msgstr "&نشانیِ اینترنتیِ جدید"
@@ -94,6 +98,13 @@ msgstr "نمیتوانم این نشانی را اضافه کنم: %s"
 #. Translators: Error message.
 msgid "Error"
 msgstr "خطا"
+
+#. Translators: Info about the selected URL.
+msgid ""
+"Original URL: {}\n"
+"Name: {}\n"
+"Shortened URL: {}"
+msgstr ""
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format

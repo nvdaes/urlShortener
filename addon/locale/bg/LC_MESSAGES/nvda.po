@@ -37,6 +37,10 @@ msgstr "&Филтриране по:"
 msgid "C&opy shortened URL"
 msgstr "&Копирай съкратения URL адрес"
 
+#. Translators: The label of an edit box to show more details about the selected URL.
+msgid "Deta&ils:"
+msgstr ""
+
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
 msgstr "URL &адрес"
@@ -76,7 +80,9 @@ msgstr "Този персонализиран URL адрес вече беше �
 #. Translators: Message presented when a custom URL has a wrong length.
 #, python-format
 msgid "This custom URL has %d characters. Length must be between 5 and 30."
-msgstr "Този персонализиран URL адрес съдържа %d знака. Дължината трябва да е между 5 и 30 знака."
+msgstr ""
+"Този персонализиран URL адрес съдържа %d знака. Дължината трябва да е между "
+"5 и 30 знака."
 
 #. Translators: Message presented when a custom URL cannot be added.
 msgid "This custom URL is not available. Try a different one."
@@ -94,6 +100,13 @@ msgstr "Следният URL адрес не може да бъде добаве
 #. Translators: Error message.
 msgid "Error"
 msgstr "Грешка"
+
+#. Translators: Info about the selected URL.
+msgid ""
+"Original URL: {}\n"
+"Name: {}\n"
+"Shortened URL: {}"
+msgstr ""
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format

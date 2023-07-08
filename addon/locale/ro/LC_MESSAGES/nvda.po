@@ -37,6 +37,10 @@ msgstr "&Filtrează după:"
 msgid "C&opy shortened URL"
 msgstr "Copiaz&ă link-ul scurt"
 
+#. Translators: The label of an edit box to show more details about the selected URL.
+msgid "Deta&ils:"
+msgstr ""
+
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
 msgstr "Link no&u"
@@ -76,7 +80,9 @@ msgstr "Acest link personalizat a fost folosit deja. Încercați altul."
 #. Translators: Message presented when a custom URL has a wrong length.
 #, python-format
 msgid "This custom URL has %d characters. Length must be between 5 and 30."
-msgstr "Acest link personalizat are %d caractere. Trebuie să aibă cel puțin 5 și cel mult 30."
+msgstr ""
+"Acest link personalizat are %d caractere. Trebuie să aibă cel puțin 5 și cel "
+"mult 30."
 
 #. Translators: Message presented when a custom URL cannot be added.
 msgid "This custom URL is not available. Try a different one."
@@ -94,6 +100,13 @@ msgstr "Nu se poate adăuga link-ul: %s"
 #. Translators: Error message.
 msgid "Error"
 msgstr "Eroare"
+
+#. Translators: Info about the selected URL.
+msgid ""
+"Original URL: {}\n"
+"Name: {}\n"
+"Shortened URL: {}"
+msgstr ""
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format

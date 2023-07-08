@@ -15,8 +15,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.2.2\n"
 
 #. Translators: the name of a menu item.
@@ -38,6 +38,10 @@ msgstr "&Фільтрувати за:"
 #. Translators: The label of a button to copy the URL.
 msgid "C&opy shortened URL"
 msgstr "&Скопіювати скорочену URL-адресу"
+
+#. Translators: The label of an edit box to show more details about the selected URL.
+msgid "Deta&ils:"
+msgstr ""
 
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
@@ -79,8 +83,8 @@ msgstr "Ця користувацька URL-адреса вже використ
 #, python-format
 msgid "This custom URL has %d characters. Length must be between 5 and 30."
 msgstr ""
-"Ця користувацька URL-адреса містить %d символів. Довжина повинна бути "
-"від 5 до 30."
+"Ця користувацька URL-адреса містить %d символів. Довжина повинна бути від 5 "
+"до 30."
 
 #. Translators: Message presented when a custom URL cannot be added.
 msgid "This custom URL is not available. Try a different one."
@@ -98,6 +102,13 @@ msgstr "Неможливо додати URL: %s"
 #. Translators: Error message.
 msgid "Error"
 msgstr "Помилка"
+
+#. Translators: Info about the selected URL.
+msgid ""
+"Original URL: {}\n"
+"Name: {}\n"
+"Shortened URL: {}"
+msgstr ""
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format
@@ -136,6 +147,5 @@ msgstr "Скорочення URL-адрес за допомогою NVDA."
 #~ msgid "&New..."
 #~ msgstr "&Нова URL-адреса..."
 
-#, python-format
 #~ msgid "Cannot add this custom URL: %s"
 #~ msgstr "Неможливо додати цю користувацьку URL-адресу: %s"

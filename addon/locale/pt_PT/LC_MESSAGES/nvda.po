@@ -10,7 +10,8 @@ msgstr ""
 "POT-Creation-Date: 2023-04-21 21:10+0000\n"
 "PO-Revision-Date: 2023-06-10 11:45+0100\n"
 "Last-Translator: Ângelo Abrantes <ampa4374@gmail.com>\n"
-"Language-Team: Equipa Portuguesa do NVDA: Ângelo Abrantes e Rui Fontes (10-06-2023)\n"
+"Language-Team: Equipa Portuguesa do NVDA: Ângelo Abrantes e Rui Fontes "
+"(10-06-2023)\n"
 "Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,6 +39,10 @@ msgstr "&Filtrar por:"
 #. Translators: The label of a button to copy the URL.
 msgid "C&opy shortened URL"
 msgstr "URL encurtado C&opy"
+
+#. Translators: The label of an edit box to show more details about the selected URL.
+msgid "Deta&ils:"
+msgstr ""
 
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
@@ -78,7 +83,9 @@ msgstr "Este URL personalizado já foi utilizado. Tente um diferente."
 #. Translators: Message presented when a custom URL has a wrong length.
 #, python-format
 msgid "This custom URL has %d characters. Length must be between 5 and 30."
-msgstr "Este URL personalizado tem %d caracteres. O comprimento deve ser entre 5 e 30."
+msgstr ""
+"Este URL personalizado tem %d caracteres. O comprimento deve ser entre 5 e "
+"30."
 
 #. Translators: Message presented when a custom URL cannot be added.
 msgid "This custom URL is not available. Try a different one."
@@ -86,7 +93,8 @@ msgstr "Este URL personalizado não está disponível. Tente um diferente."
 
 #. Translators: Message presented when an URL cannot be shortened.
 msgid "Cannot shorten URL. Check Internet connectivity."
-msgstr "Não é possível encurtar o URL. Verificar a conectividade com a Internet."
+msgstr ""
+"Não é possível encurtar o URL. Verificar a conectividade com a Internet."
 
 #. Translators: Message presented when a shortened URL cannot be added.
 #, python-format
@@ -96,6 +104,13 @@ msgstr "Não é possível adicionar URL: %s"
 #. Translators: Error message.
 msgid "Error"
 msgstr "Erro"
+
+#. Translators: Info about the selected URL.
+msgid ""
+"Original URL: {}\n"
+"Name: {}\n"
+"Shortened URL: {}"
+msgstr ""
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format
