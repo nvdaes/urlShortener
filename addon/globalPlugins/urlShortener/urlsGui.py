@@ -177,7 +177,7 @@ class UrlsDialog(wx.Dialog):
 			return
 		if customUrl and (len(customUrl) < 5 or len(customUrl) > 30):
 			# Translators: Message presented when a custom URL has a wrong length.
-			ui.message(_("This custom URL has %d characters. Length must be between 5 and 30." % len(customUrl)))
+			ui.message(_("This custom URL has %d characters. Length must be between 5 and 30.") % len(customUrl))
 			self.customUrlTextCtrl.SetFocus()
 			return
 		try:
@@ -280,7 +280,7 @@ class UrlsDialog(wx.Dialog):
 		url = self._urls[self.filteredItems[self.sel]]
 		if gui.messageBox(
 			# Translators: The confirmation prompt displayed when the user requests to delete an URL.
-			_("Are you sure you want to delete this URL: %s?" % url.name),
+			_("Are you sure you want to delete this URL: %s?") % url.name,
 			# Message translated in NVDA core.
 			translate("Confirm Deletion"),
 			wx.YES | wx.NO | wx.ICON_QUESTION, self
