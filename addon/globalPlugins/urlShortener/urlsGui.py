@@ -261,7 +261,8 @@ class UrlsDialog(wx.Dialog):
 	def onCopy(self, evt):
 		shortenUrl = self._urls[self.filteredItems[self.sel]].shortenedUrl
 		if api.copyToClip(shortenUrl):
-			ui.message(translate("Copied"))
+			# Translators: Message presented when the selected URL has been copied.
+			ui.message(_("Copied"))
 		self.urlsList.SetFocus()
 
 	def onUrlTextCtrlChange(self, evt):
