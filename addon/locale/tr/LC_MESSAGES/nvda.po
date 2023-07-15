@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: URL Kısaltıcı 5.0.0\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2023-05-17 18:00+0300\n"
-"PO-Revision-Date: 2023-05-17 21:04+0300\n"
+"PO-Revision-Date: 2023-07-08 13:14+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Poedit-Basepath: ../../../globalPlugins\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -42,7 +42,7 @@ msgstr "Kısaltılmış URL'yi &kopyala"
 
 #. Translators: The label of an edit box to show more details about the selected URL.
 msgid "Deta&ils:"
-msgstr ""
+msgstr "&Detaylar:"
 
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
@@ -107,6 +107,13 @@ msgid ""
 "Original URL: {}\n"
 "Name: {}\n"
 "Shortened URL: {}"
+msgstr ""
+"Orijinal URL: {}\n"
+"Ad: {}\n"
+"Kısaltılmış URL: {}"
+
+#. Translators: Message presented when the selected URL has been copied.
+msgid "Copied"
 msgstr ""
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
