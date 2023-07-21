@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: URL Kısaltıcı 5.0.0\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2023-05-17 18:00+0300\n"
-"PO-Revision-Date: 2023-07-08 13:14+0300\n"
+"PO-Revision-Date: 2023-07-15 15:09+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -114,7 +114,7 @@ msgstr ""
 
 #. Translators: Message presented when the selected URL has been copied.
 msgid "Copied"
-msgstr ""
+msgstr "Kopyalandı"
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format
