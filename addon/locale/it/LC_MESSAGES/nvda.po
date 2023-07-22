@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: urlShortener 5.0.0\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2023-05-12 21:10+0000\n"
-"PO-Revision-Date: 2023-05-29 17:52+0200\n"
-"Last-Translator: Leonardo Marenda <job@leonardomarenda.it>\n"
+"PO-Revision-Date: 2023-07-18 21:55+0200\n"
+"Last-Translator: NetB di Leonardo Marenda <posta@netb.pro>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. Translators: the name of a menu item.
 msgid "&Shorten URL..."
@@ -35,11 +35,11 @@ msgstr "&Filtra per:"
 
 #. Translators: The label of a button to copy the URL.
 msgid "C&opy shortened URL"
-msgstr "C&opia l'URL abbreviato"
+msgstr "&Copia l'URL abbreviato"
 
 #. Translators: The label of an edit box to show more details about the selected URL.
 msgid "Deta&ils:"
-msgstr ""
+msgstr "&Dettagli"
 
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
@@ -107,10 +107,13 @@ msgid ""
 "Name: {}\n"
 "Shortened URL: {}"
 msgstr ""
+"URL originale: {}\n"
+"Nome: {}\n"
+"URL abbreviato: {}"
 
 #. Translators: Message presented when the selected URL has been copied.
 msgid "Copied"
-msgstr ""
+msgstr "Copiato"
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format

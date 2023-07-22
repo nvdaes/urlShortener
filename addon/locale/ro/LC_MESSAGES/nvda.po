@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: urlShortener 5.0.0\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2023-05-12 21:10+0000\n"
-"PO-Revision-Date: 2023-07-09 21:18+0300\n"
+"PO-Revision-Date: 2023-07-19 09:48+0300\n"
 "Last-Translator: Florian Ionașcu <florianionascu@hotmail.com>\n"
 "Language-Team: \n"
 "Language: ro\n"
@@ -113,7 +113,7 @@ msgstr ""
 
 #. Translators: Message presented when the selected URL has been copied.
 msgid "Copied"
-msgstr ""
+msgstr "Copiat"
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format
