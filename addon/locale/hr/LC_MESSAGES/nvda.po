@@ -5,105 +5,99 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: urlShortener 2.0.0\n"
+"Project-Id-Version: urlShortener 5.0.0\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
-"POT-Creation-Date: 2023-04-21 21:10+0000\n"
-"PO-Revision-Date: 2023-07-28 17:04+0100\n"
-"Last-Translator: Ângelo Abrantes <ampa4374@gmail.com>\n"
-"Language-Team: Equipa Portuguesa do NVDA: Ângelo Abrantes e Rui Fontes "
-"(10-06-2023)\n"
-"Language: pt_PT\n"
+"POT-Creation-Date: 2023-05-12 21:10+0000\n"
+"PO-Revision-Date: 2023-07-27 15:52+0200\n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 3.0\n"
 
 #. Translators: the name of a menu item.
 msgid "&Shorten URL..."
-msgstr "&Curtar URL..."
+msgstr "&Skrati URL …"
 
 #. Translators: message presented in input mode.
 msgid "Activates the Shorten URL dialog."
-msgstr "Activa O diálogo Encurtar URL."
+msgstr "Aktivira dijalog „Skrati URL”."
 
 #. Translators: The title of a dialog.
 msgid "urls"
-msgstr "urls"
+msgstr "url adrese"
 
 #. Translators: Label of a dialog (message translated in NVDA's core in different contexts).
 msgid "&Filter by:"
-msgstr "&Filtrar por:"
+msgstr "&Filtriraj po:"
 
 #. Translators: The label of a button to copy the URL.
 msgid "C&opy shortened URL"
-msgstr "URL encurtado C&opy"
+msgstr "K&opiraj skraćeni URL"
 
 #. Translators: The label of an edit box to show more details about the selected URL.
 msgid "Deta&ils:"
-msgstr "Pormenores:"
+msgstr "Detalj&i:"
 
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
-msgstr "Novo &URL"
+msgstr "Novi &URL"
 
 #. Translators: The label of a field to enter the name for a new URL.
 msgid "&Name for new URL"
-msgstr "&Nome para o novo URL"
+msgstr "&Ime nove URL adrese"
 
 #. Translators: The label of a field to enter a custom URL.
 msgid "Cus&tom URL"
-msgstr "&Personalizar URL"
+msgstr "&Prilagođena URL adresa"
 
 #. Translators: The label of a button to add a new URL.
 msgid "Short&en New URL"
-msgstr "Encurtar&enviar novo URL"
+msgstr "Skrati novu URL adr&esu"
 
 #. Translators: The label of a button to rename an URL.
 msgid "&Rename..."
-msgstr "&Remonear..."
+msgstr "P&reimenuj …"
 
 #. Translators: The label of a button to delete an URL.
 msgid "&Delete..."
-msgstr "&Apagar..."
+msgstr "Iz&briši …"
 
 #. Translators: The label of a button to delete settings folder.
 msgid "Remove &saved URLs..."
-msgstr "Remover URLs &guardados..."
+msgstr "U&kloni spremljene URL adrese …"
 
 #. Translators: Message presented when an URL was already saved.
 msgid "This URL was already saved."
-msgstr "Este URL já foi guardado."
+msgstr "Ova je URL adresa već spremljena."
 
 #. Translators: Message presented when a custom URL is already saved.
 msgid "This custom URL was already used. Try a different one."
-msgstr "Este URL personalizado já foi utilizado. Tente um diferente."
+msgstr "Prilagođena URL adresa je već spremljena. Probaj jednu drugu adresu."
 
 #. Translators: Message presented when a custom URL has a wrong length.
 #, python-format
 msgid "This custom URL has %d characters. Length must be between 5 and 30."
-msgstr ""
-"Este URL personalizado tem %d caracteres. O comprimento deve ser entre 5 e "
-"30."
+msgstr "Ova prilagođena URL adresa sadrži %d znakova. Broj znakova mora biti između 5 i 30."
 
 #. Translators: Message presented when a custom URL cannot be added.
 msgid "This custom URL is not available. Try a different one."
-msgstr "Este URL personalizado não está disponível. Tente um diferente."
+msgstr "Prilagođena URL adresa nije dostupna. Probaj jednu drugu adresu."
 
 #. Translators: Message presented when an URL cannot be shortened.
 msgid "Cannot shorten URL. Check Internet connectivity."
-msgstr ""
-"Não é possível encurtar o URL. Verificar a conectividade com a Internet."
+msgstr "Nije moguće skratiti URL adresu. Provjeri internetsku vezu."
 
 #. Translators: Message presented when a shortened URL cannot be added.
 #, python-format
 msgid "Cannot add URL: %s"
-msgstr "Não é possível adicionar URL: %s"
+msgstr "Nije moguće dodati URL adresu.: %s"
 
 #. Translators: Error message.
 msgid "Error"
-msgstr "Erro"
+msgstr "Greška"
 
 #. Translators: Info about the selected URL.
 msgid ""
@@ -111,50 +105,38 @@ msgid ""
 "Name: {}\n"
 "Shortened URL: {}"
 msgstr ""
-"URL original: {}\n"
-"Nome: {}\n"
-"URL abreviado: {}"
+"Izvorna URL adresa: {}\n"
+"Ime: {}\n"
+"Skraćena URL adresa: {}"
 
 #. Translators: Message presented when the selected URL has been copied.
 msgid "Copied"
-msgstr "Copiado"
+msgstr "Kopirano"
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format
 msgid "Are you sure you want to delete this URL: %s?"
-msgstr "Tem a certeza de que pretende apagar este URL: %s?"
+msgstr "Stvarno želiš izbrisati ovu URL adresu: %s?"
 
 #. Translators: The label of a field to enter a new name for an URL.
 msgid "New name:"
-msgstr "Novo nome:"
+msgstr "Novo ime:"
 
 #. Translators: The title of a dialog to rename an URL.
 msgid "Rename URL"
-msgstr "Mudar o nome do URL"
+msgstr "Preimenuj URL adresu"
 
 #. Translators: The confirmation prompt displayed when the user requests to delete saved URLs.
 msgid "Are you sure you want to delete your saved URLs?"
-msgstr "Tem a certeza de que pretende eliminar os URLs guardados?"
+msgstr "Stvarno želiš izbrisati svoje URL adrese?"
 
 #. Add-on summary, usually the user visible name of the addon.
 #. Translators: Summary for this add-on
 #. to be shown on installation and add-on information found in Add-ons Manager.
 msgid "URL Shortener"
-msgstr "Encurtador de URL"
+msgstr "Kraćenje URL adresa"
 
 #. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 msgid "Shorten URLs through NVDA."
-msgstr "Encurtar URLs através do NVDA."
-
-#~ msgid "&Rename URL"
-#~ msgstr "&Renomear o URL"
-
-#~ msgid "&Name"
-#~ msgstr "&Nome"
-
-#~ msgid "&New..."
-#~ msgstr "&Novo..."
-
-#~ msgid "Cannot add this custom URL: %s"
-#~ msgstr "Não é possível adicionar este URL personalizado: %s"
+msgstr "Skrati URL adrese putem NVDA čitača."
