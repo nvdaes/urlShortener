@@ -1,0 +1,13 @@
+name: Build and test NVDA add-on
+
+on:
+  pull_request:
+
+jobs:
+
+  nvda:
+  
+    name: NVDA
+    permissions:
+      contents: write
+    uses: nvdaes/nvdaAddonWorkflows/.github/workflows/testWithNVDA.yaml@main
