@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: urlShortener 20230426.0.0\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2023-04-28 21:10+0000\n"
-"PO-Revision-Date: 2023-05-13 21:25+0330\n"
+"PO-Revision-Date: 2023-08-11 21:26+0330\n"
 "Last-Translator: Mohammadreza Rashad <mohammadreza5712@gmail.com>\n"
 "Language-Team: NVDA Translation Team <nvda-translations@groups.io>\n"
 "Language: fa\n"
@@ -39,7 +39,7 @@ msgstr "&کپی کردنِ نشانیِ اینترنتیِ کوتاه‌شده"
 
 #. Translators: The label of an edit box to show more details about the selected URL.
 msgid "Deta&ils:"
-msgstr ""
+msgstr "ج&زئیات:"
 
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
@@ -105,10 +105,13 @@ msgid ""
 "Name: {}\n"
 "Shortened URL: {}"
 msgstr ""
+"نشانیِ اینترنتیِ اصلی: {}\n"
+"نام: {}\n"
+"نشانیِ اینترنتیِ کوتاه‌شده: {}"
 
 #. Translators: Message presented when the selected URL has been copied.
 msgid "Copied"
-msgstr ""
+msgstr "کپی شد"
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format
