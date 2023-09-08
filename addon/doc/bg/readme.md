@@ -1,10 +1,6 @@
 # Съкращаване на URL адреси (URL Shortener) #
 
 * Автор: Noelia Ruiz Martínez
-* Изтегляне на [най-новата стабилна версия][1] (съвместима с NVDA 2023.1 и
-  по-нови версии)
-* Изтегляне на [най-новата бета версия][2] (съвместима с NVDA 2023.1 и
-  по-нови версии)
 
 Тази добавка се използва за съкращаване на URL адреси от NVDA посредством
 [is.gd][3].
@@ -46,9 +42,5 @@
 * Първо издание.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener
-
-[2]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener-beta
 
 [3]: https://is.gd

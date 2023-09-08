@@ -1,10 +1,6 @@
 # Acortador URL #
 
 * Autor: Noelia Ruiz Martínez
-* Descargar [versión estable más reciente][1] (compatible con NVDA 2023.1 y
-  posterior)
-* Descargar [versión beta más reciente][2] (compatible con NVDA 2023.1 y
-  posterior)
 
 Este complemento se usa para acortar URLs desde NVDA mediante [is.gd][3].
 
@@ -44,9 +40,5 @@ El diálogo Acortar URL incluye los siguientes controles:
 * Versión inicial.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener
-
-[2]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener-beta
 
 [3]: https://is.gd

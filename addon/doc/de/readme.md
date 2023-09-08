@@ -1,10 +1,6 @@
 # URL verkürzen #
 
 * Autor: Noelia Ruiz Martínez
-* [Letzte stabile Version herunterladen][1] (kompatibel mit NVDA 2023.1 und
-  neuer)
-* [Letzte Beta-Version herunterladen][2] (kompatibel mit NVDA 2023.1 und
-  neuer)
 
 Diese NVDA-Erweiterung wird verwendet, um URLs von NVDA über [is.gd][3] zu
 verkürzen.
@@ -46,9 +42,5 @@ Das Dialogfeld zum URL verkürzen enthält die folgenden Steuerelemente:
 * Erstveröffentlichung.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener
-
-[2]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener-beta
 
 [3]: https://is.gd

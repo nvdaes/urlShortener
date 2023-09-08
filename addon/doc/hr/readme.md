@@ -1,9 +1,6 @@
 # Kraćenje URL adresa (URL Shortener) #
 
 * Autor: Noelia Ruiz Martínez
-* Preuzmi [stabilnu verziju][1] (kompatibilna s NVDA 2023.1 i novijom
-  verzijom)
-* Preuzmi [beta verziju][2] (kompatibilna s NVDA 2023.1 i novijom verzijom)
 
 Ovaj se dodatak koristi za skraćivanje URL adresa putem [is.gd][3].
 
@@ -41,9 +38,5 @@ The Shorten URL dialog includes the following controls:
 * Prva verzija.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener
-
-[2]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener-beta
 
 [3]: https://is.gd
