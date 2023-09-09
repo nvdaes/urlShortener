@@ -1,10 +1,6 @@
 # Réduire URL #
 
 * Auteur : Noelia Ruiz Martínez
-* Télécharger [dernière version stable][1] (compatible avec NVDA 2023.1 et
-  au-delà)
-* Télécharger [dernière version béta][2] (compatible avec NVDA 2023.1 et
-  au-delà)
 
 Cette extension est utilisé pour réduire les URL depuis NVDA à travers de
 [is.gd][3].
@@ -45,9 +41,5 @@ La boîte de dialogue Réduire URL comprend les commandes suivantes:
 * Première version.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener
-
-[2]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener-beta
 
 [3]: https://is.gd

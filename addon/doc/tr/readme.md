@@ -1,8 +1,6 @@
 # URL Kısaltıcı #
 
 * Yazar: Noelia Ruiz Martínez
-* [En son kararlı sürümü indirin][1] (NVDA 2023.1 ve sonrası ile uyumlu)
-* [En son beta sürümünü indirin][2] (NVDA 2023.1 ve sonrası ile uyumlu)
 
 Bu eklenti, NVDA [is.gd][3] ile olan URL'leri kısaltmak için kullanılır.
 
@@ -43,9 +41,5 @@ URL Kısaltıcı iletişim kutusu aşağıdaki kontrolleri içerir:
 * İlk sürüm.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener
-
-[2]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener-beta
 
 [3]: https://is.gd

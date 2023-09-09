@@ -1,10 +1,6 @@
 # URLin lyhentäjä #
 
 * Tekijä: Noelia Ruiz Martínez
-* Lataa [viimeisin vakaa versio][1] (yhteensopiva NVDA 2023.1:n ja sitä
-  uudempien kanssa)
-* Lataa [viimeisin beetaversio][2] (yhteensopiva NVDA 2023.1:n ja sitä
-  uudempien kanssa)
 
 Tätä lisäosaa käytetään URLien lyhentämiseen NVDA:sta [is.gd][3]-palvelun
 avulla.
@@ -45,9 +41,5 @@ Lyhennä URL -valintaikkuna sisältää seuraavat säätimet:
 * Ensimmäinen versio.
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener
-
-[2]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener-beta
 
 [3]: https://is.gd

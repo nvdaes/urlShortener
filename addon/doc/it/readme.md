@@ -1,10 +1,6 @@
 # Abbreviatore di URL #
 
 * Autore: Noelia Ruiz Martínez
-* Scarica [l'ultima versione stabile][1] (compatibile con NVDA 2023.1 e
-  successive)
-* Scarica [l'ultima versione beta][2] (compatibile con NVDA 2023.1 e
-  successive)
 
 Questo componente aggiuntivo viene utilizzato per abbreviare gli URL da NVDA
 tramite [is.gd][3].
@@ -45,9 +41,5 @@ La finestra di dialogo Abbrevia URL include i seguenti controlli:
 * Versione iniziale
 
 [[!tag dev stable]]
-
-[1]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener
-
-[2]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener-beta
 
 [3]: https://is.gd
