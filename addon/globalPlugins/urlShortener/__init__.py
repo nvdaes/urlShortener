@@ -31,7 +31,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	scriptCategory = ADDON_SUMMARY
 
 	def __init__(self):
-		super(GlobalPlugin, self).__init__()
+		super().__init__()
 		self.toolsMenu = gui.mainFrame.sysTrayIcon.toolsMenu
 		# Translators: the name of a menu item.
 		self.urlsListItem = self.toolsMenu.Append(wx.ID_ANY, _("&Shorten URL..."))

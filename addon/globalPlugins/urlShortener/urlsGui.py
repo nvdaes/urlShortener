@@ -59,7 +59,7 @@ class UrlsDialog(wx.Dialog):
 		except Exception as e:
 			self._urls = [UrlMetadata("example.com", "example.com", "https://is.gd/iKpnPV")]
 			log.debugWarning(f"Could not open URLs file: {e}")
-		super(UrlsDialog, self).__init__(
+		super().__init__(
 			# Translators: The title of a dialog.
 			parent, title=_("urls")
 		)
@@ -87,7 +87,7 @@ class UrlsDialog(wx.Dialog):
 		self.urlsList.Selection = 0
 		self.urlsList.Bind(wx.EVT_LISTBOX, self.onUrlsListChoice)
 
-		changeUrlsSizer.Add(self.urlsList, proportion=1.0)
+		changeUrlsSizer.Add(self.urlsList, proportion=1)
 		changeUrlsSizer.AddSpacer(guiHelper.SPACE_BETWEEN_BUTTONS_VERTICAL)
 		urlsListGroupContents.Add(changeUrlsSizer, flag=wx.EXPAND)
 		urlsListGroupContents.AddSpacer(guiHelper.SPACE_BETWEEN_ASSOCIATED_CONTROL_HORIZONTAL)
