@@ -1,6 +1,6 @@
 # Abbreviatore di URL #
 
-* Autore: Noelia Ruiz Martínez
+* Author: Noelia Ruiz Martínez
 
 Questo componente aggiuntivo viene utilizzato per abbreviare gli URL da NVDA
 tramite [is.gd][3].

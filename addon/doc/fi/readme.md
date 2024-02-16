@@ -1,6 +1,6 @@
 # URLin lyhentäjä #
 
-* Tekijä: Noelia Ruiz Martínez
+* Author: Noelia Ruiz Martínez
 
 Tätä lisäosaa käytetään URLien lyhentämiseen NVDA:sta [is.gd][3]-palvelun
 avulla.

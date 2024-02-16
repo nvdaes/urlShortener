@@ -1,6 +1,6 @@
 # Kraćenje URL adresa (URL Shortener) #
 
-* Autor: Noelia Ruiz Martínez
+* Author: Noelia Ruiz Martínez
 
 Ovaj se dodatak koristi za skraćivanje URL adresa putem [is.gd][3].
 
