@@ -1,6 +1,6 @@
 # URL Shortener (Скорочувач URL-адрес) #
 
-* Автор: Noelia Ruiz Martínez
+* Author: Noelia Ruiz Martínez
 
 Цей додаток використовується для скорочення URL-адрес за допомогою NVDA
 через [is.gd][3].

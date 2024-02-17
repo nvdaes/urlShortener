@@ -1,6 +1,6 @@
 # Съкращаване на URL адреси (URL Shortener) #
 
-* Автор: Noelia Ruiz Martínez
+* Author: Noelia Ruiz Martínez
 
 Тази добавка се използва за съкращаване на URL адреси от NVDA посредством
 [is.gd][3].

@@ -1,6 +1,6 @@
 # URL verkürzen #
 
-* Autor: Noelia Ruiz Martínez
+* Author: Noelia Ruiz Martínez
 
 Diese NVDA-Erweiterung wird verwendet, um URLs von NVDA über [is.gd][3] zu
 verkürzen.
