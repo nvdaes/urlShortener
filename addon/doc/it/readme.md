@@ -2,8 +2,7 @@
 
 * Author: Noelia Ruiz Martínez
 
-Questo componente aggiuntivo viene utilizzato per abbreviare gli URL da NVDA
-tramite [is.gd][3].
+This add-on is used to shorten URLs from NVDA through [is.gd][1].
 
 ## Finestra di dialogo abbrevia URL ##
 
@@ -19,15 +18,26 @@ La finestra di dialogo Abbrevia URL include i seguenti controlli:
   pulsanti.
 * Copia l'URL abbreviato. Questo può essere attivato anche premendo Invio
   dall'elenco degli URL.
-* Nuovo: apre una finestra di dialogo per digitare un URL da abbreviare. Un
-  nome visualizzato e un suffisso personalizzato per l'URL abbreviato
-  possono essere indicati in questa finestra di dialogo.
+* A readonly box showing details about the selected URL.
+* Set of controls to shorten a new URL: Provide the new URL; optionally, you
+  can set a display name and a custom subfix for the shortened URL. Finally,
+  press the Shorten URL button.
 * Rinomina: apre una finestra di dialogo per indicare un nuovo nome da
   visualizzare nell'elenco per l'URL selezionato.
 * Elimina: apre una finestra di dialogo per eliminare l'URL selezionato.
 * Rimuovi URL salvati: apre una finestra di dialogo per rimuovere gli URL
   salvati dalla cartella di configurazione.
 * Chiudi.
+
+## Changes for 8.0.0 ##
+
+* Added a readonly box with details about the selected URL.
+
+## Changes for 5.0.0 ##
+
+* The new URL dialog has been replaced with a set of controls in the main
+  dialog, so that the focus can be placed in the relevant field to fix
+  possible errors.
 
 ## Modifiche nella versione 2.0.0 ##
 
@@ -40,6 +50,7 @@ La finestra di dialogo Abbrevia URL include i seguenti controlli:
 
 * Versione iniziale
 
+
 [[!tag dev stable]]
 
-[3]: https://is.gd
+[1]: https://is.gd

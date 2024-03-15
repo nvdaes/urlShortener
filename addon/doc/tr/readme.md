@@ -2,7 +2,7 @@
 
 * Yazar: Noelia Ruiz Martínez
 
-Bu eklenti, NVDA [is.gd][3] ile olan URL'leri kısaltmak için kullanılır.
+Bu eklenti, NVDA [is.gd][1] ile olan URL'leri kısaltmak için kullanılır.
 
 ## URL Kısaltıcı iletişim kutusu ##
 
@@ -19,15 +19,26 @@ URL Kısaltıcı iletişim kutusu aşağıdaki kontrolleri içerir:
   tuşuna basın.
 * Kısaltılmış URL'yi kopyala. Bu, URL listesinden Enter tuşuna basılarak da
   etkinleştirilebilir.
-* Yeni: kısaltılacak bir URL yazmak için bir iletişim kutusu açar. Bu
-  iletişim kutusundan kısaltılmış URL için bir görünen ad ve özel bir alt ek
-  sağlanabilir.
+* Seçilen URL ile ilgili ayrıntıları gösteren salt okunur bir kutu.
+* Yeni bir URL'yi kısaltmaya yönelik kontroller kümesi: Yeni URL'yi
+  sağlayın; isteğe bağlı olarak kısaltılmış URL için bir görünen ad ve özel
+  bir alt ek belirleyebilirsiniz. Son olarak URL'yi Kısalt düğmesine basın.
 * Yeniden adlandır: listede seçilen URL'yi görüntülemek için yeni bir ad
   sağlamak üzere bir iletişim kutusu açar.
 * Sil: seçili URL'yi silmek için bir iletişim kutusu açar.
 * Kaydedilen URL'leri kaldır: kaydedilen URL'leri yapılandırma klasöründen
   kaldırmak için bir iletişim kutusu açar.
 * Kapat.
+
+## 8.0.0 için değişiklikler ##
+
+* Seçilen URL ile ilgili ayrıntıları içeren salt okunur bir kutu eklendi.
+
+## 5.0.0 için değişiklikler ##
+
+* Yeni URL iletişim kutusu, ana iletişim kutusundaki bir dizi kontrolle
+  değiştirildi; böylece olası hataları düzeltmek için odak ilgili alana
+  yerleştirilebiliyor.
 
 ## 2.0.0 için değişiklikler ##
 
@@ -40,6 +51,7 @@ URL Kısaltıcı iletişim kutusu aşağıdaki kontrolleri içerir:
 
 * İlk sürüm.
 
+
 [[!tag dev stable]]
 
-[3]: https://is.gd
+[1]: https://is.gd
