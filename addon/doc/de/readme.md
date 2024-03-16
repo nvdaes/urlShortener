@@ -2,8 +2,7 @@
 
 * Author: Noelia Ruiz Martínez
 
-Diese NVDA-Erweiterung wird verwendet, um URLs von NVDA über [is.gd][3] zu
-verkürzen.
+This add-on is used to shorten URLs from NVDA through [is.gd][1].
 
 ## Dialogfeld zum URL verkürzen ##
 
@@ -20,15 +19,26 @@ Das Dialogfeld zum URL verkürzen enthält die folgenden Steuerelemente:
   folgenden Tasten zu betätigen.
 * Verkürzte URL kopieren. Dies kann auch durch Drücken der Eingabetaste in
   der Liste der URLs getätigt werden.
-* Neu: Öffnet ein Dialogfeld zur Eingabe einer zu verkürzenden URL. In
-  diesem Dialogfeld können ein Anzeigename und ein benutzerdefinierter
-  Subfix für die verkürzte URL angegeben werden.
+* A readonly box showing details about the selected URL.
+* Set of controls to shorten a new URL: Provide the new URL; optionally, you
+  can set a display name and a custom subfix for the shortened URL. Finally,
+  press the Shorten URL button.
 * Umbenennen: Öffnet ein Dialogfeld, in dem Sie einen neuen Namen für die
   Anzeige der ausgewählten URL in der Liste eingeben können.
 * Löschen: Öffnet einen Dialogfeld zum Löschen einer ausgewählten URL.
 * Gespeicherte URLs entfernen: Öffnet einen Dialogfeld zum Entfernen
   gespeicherter URLs aus dem Konfigurationsordner.
 * Schließen.
+
+## Changes for 8.0.0 ##
+
+* Added a readonly box with details about the selected URL.
+
+## Changes for 5.0.0 ##
+
+* The new URL dialog has been replaced with a set of controls in the main
+  dialog, so that the focus can be placed in the relevant field to fix
+  possible errors.
 
 ## Änderungen in 2.0.0 ##
 
@@ -41,6 +51,7 @@ Das Dialogfeld zum URL verkürzen enthält die folgenden Steuerelemente:
 
 * Erstveröffentlichung.
 
+
 [[!tag dev stable]]
 
-[3]: https://is.gd
+[1]: https://is.gd

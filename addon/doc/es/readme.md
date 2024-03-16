@@ -2,7 +2,7 @@
 
 * Autor: Noelia Ruiz Martínez
 
-Este complemento se usa para acortar URLs desde NVDA mediante [is.gd][3].
+Este complemento se usa para acortar URLs desde NVDA mediante [is.gd][1].
 
 ## El diálogo de acortar URL ##
 
@@ -18,15 +18,28 @@ El diálogo Acortar URL incluye los siguientes controles:
   botones.
 * Copiar URL acortada. También se puede activar pulsando intro en la lista
   de URLs.
-* Nueva: abre un diálogo para escribir una URL a acortar. Se puede
-  proporcionar un nombre para mostrar y un sufijo para la URL acortada desde
-  este diálogo.
+* Un cuadro de sólo lectura que muestra detalles sobre la URL.
+* Conjunto de controles para acortar una nueva URL: proporciona la nueva
+  URL. Opcionalmente, puedes configurar un nombre para mostrar y un sufijo
+  personalizado para la URL acortada. Finalmente, pulsa el botón Acortar
+  URL.
 * Renombrar: abre un diálogo para proporcionar un nuevo nombre para mostrar
   la URL seleccionada en la lista.
 * Eliminar: abre un diálogo para eliminar la URL seleccionada.
 * Borrar URLs guardadas: abre un diálogo para borrar las URLs guardadas de
   la carpeta de configuración.
 * Cerrar.
+
+## Cambios para 8.0.0 ##
+
+* Se ha añadido un cuadro de sólo lectura con detalles sobre la URL
+  seleccionada.
+
+## Cambios para 5.0.0 ##
+
+* Se ha sustituido el diálogo de nueva URL por un conjunto de controles en
+  el diálogo principal, de tal manera que se pueda situar el foco en el
+  campo relevante para corregir posibles errores.
 
 ## Cambios para 2.0.0 ##
 
@@ -39,6 +52,7 @@ El diálogo Acortar URL incluye los siguientes controles:
 
 * Versión inicial.
 
+
 [[!tag dev stable]]
 
-[3]: https://is.gd
+[1]: https://is.gd
