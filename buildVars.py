@@ -25,7 +25,7 @@ addon_info = {
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("""Shorten URLs through NVDA."""),
 	# version
-	"addon_version": "10.1.0",
+	"addon_version": "11.0.0",
 	# Author(s)
 	"addon_author": "Noelia Ruiz Martínez <nrm1977@gmail.com>",
 	# URL for the add-on documentation support
