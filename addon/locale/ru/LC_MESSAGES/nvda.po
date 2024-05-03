@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: urlShortener 2.0.0\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2023-04-21 21:10+0000\n"
-"PO-Revision-Date: 2023-04-22 20:08+0400\n"
+"PO-Revision-Date: 2024-05-03 13:42+0500\n"
 "Last-Translator: Dragan Ratkovich\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Translators: the name of a menu item.
 msgid "&Shorten URL..."
@@ -26,24 +26,8 @@ msgid "Activates the Shorten URL dialog."
 msgstr "Активирует диалоговое окно Сократить URL."
 
 #. Translators: The title of a dialog.
-msgid "&Rename URL"
-msgstr "&Переименовать URL"
-
-#. Translators: The label of a field to enter an address for a new shortened URL.
-msgid "&URL"
-msgstr "&URL"
-
-#. Translators: The label of a field to enter the name for a new URL.
-msgid "&Name"
-msgstr "&Имя"
-
-#. Translators: The label of a field to enter a custom URL.
-msgid "Cus&tom URL"
-msgstr "&Пользовательский URL"
-
-#. Translators: The title of a dialog.
 msgid "urls"
-msgstr "URL-адреса"
+msgstr "адреса URL"
 
 #. Translators: Label of a dialog (message translated in NVDA's core in different contexts).
 msgid "&Filter by:"
@@ -53,9 +37,25 @@ msgstr "&Сортировать по:"
 msgid "C&opy shortened URL"
 msgstr "С&копировать сокращенный URL"
 
+#. Translators: The label of an edit box to show more details about the selected URL.
+msgid "Deta&ils:"
+msgstr "&Подробности:"
+
+#. Translators: The label of a field to enter an address for a new shortened URL.
+msgid "New &URL"
+msgstr "&URL"
+
+#. Translators: The label of a field to enter the name for a new URL.
+msgid "&Name for new URL"
+msgstr "&Название URL"
+
+#. Translators: The label of a field to enter a custom URL.
+msgid "Cus&tom URL"
+msgstr "&Пользовательский URL"
+
 #. Translators: The label of a button to add a new URL.
-msgid "&New..."
-msgstr "&Новый..."
+msgid "Short&en New URL"
+msgstr "&Сократить URL"
 
 #. Translators: The label of a button to rename an URL.
 msgid "&Rename..."
@@ -69,10 +69,26 @@ msgstr "&Удалить..."
 msgid "Remove &saved URLs..."
 msgstr "Удалить &сохраненные URL..."
 
-#. Translators: Message presented when a custom URL cannot be added.
+#. Translators: Message presented when an URL was already saved.
+msgid "This URL was already saved."
+msgstr "Этот URL уже сохранён."
+
+#. Translators: Message presented when a custom URL is already saved.
+msgid "This custom URL was already used. Try a different one."
+msgstr "Этот пользовательский URL уже использовался. Попробуйте другой."
+
+#. Translators: Message presented when a custom URL has a wrong length.
 #, python-format
-msgid "Cannot add this custom URL: %s"
-msgstr "Невозможно добавить этот пользовательский URL: %s"
+msgid "This custom URL has %d characters. Length must be between 5 and 30."
+msgstr "Этот пользовательский URL состоит из %d символов. Длина URL должна быть от 5 до 30 символов."
+
+#. Translators: Message presented when a custom URL cannot be added.
+msgid "This custom URL is not available. Try a different one."
+msgstr "Этот пользовательский URL-адрес недоступен. Попробуйте другой."
+
+#. Translators: Message presented when an URL cannot be shortened.
+msgid "Cannot shorten URL. Check Internet connectivity."
+msgstr "Не удаётся сократить URL. Проверьте подключение к Интернету."
 
 #. Translators: Message presented when a shortened URL cannot be added.
 #, python-format
@@ -83,9 +99,19 @@ msgstr "Невозможно добавить URL: %s"
 msgid "Error"
 msgstr "Ошибка"
 
-#. Translators: The title of a dialog.
-msgid "Shorten URL"
-msgstr "Сократить URL"
+#. Translators: Info about the selected URL.
+msgid ""
+"Original URL: {}\n"
+"Name: {}\n"
+"Shortened URL: {}"
+msgstr ""
+"Исходный URL: {}\n"
+"Название: {}\n"
+"Сокращённый URL: {}"
+
+#. Translators: Message presented when the selected URL has been copied.
+msgid "Copied"
+msgstr "URL скопирован в буфер обмена"
 
 #. Translators: The confirmation prompt displayed when the user requests to delete an URL.
 #, python-format
@@ -114,3 +140,15 @@ msgstr "Сокращение URL"
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 msgid "Shorten URLs through NVDA."
 msgstr "Сократите URL через NVDA."
+
+#~ msgid "&Rename URL"
+#~ msgstr "&Переименовать URL"
+
+#~ msgid "&Name"
+#~ msgstr "&Имя"
+
+#~ msgid "&New..."
+#~ msgstr "&Новый..."
+
+#~ msgid "Cannot add this custom URL: %s"
+#~ msgstr "Невозможно добавить этот пользовательский URL: %s"

@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: urlShortener 2.0.0\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2023-04-21 21:10+0000\n"
-"PO-Revision-Date: 2023-07-15 09:58+0300\n"
-"Last-Translator: Kostadin Kolev <k_kolev1985@mail.bg>\n"
+"PO-Revision-Date: 2024-05-03 17:22+0300\n"
+"Last-Translator: Kostadin Kolev <k.kolev1985@gmail.com>\n"
 "Language-Team: \n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. Translators: the name of a menu item.
 msgid "&Shorten URL..."
@@ -136,7 +136,7 @@ msgstr "Сигурни ли сте, че искате да изтриете ва
 #. Translators: Summary for this add-on
 #. to be shown on installation and add-on information found in Add-ons Manager.
 msgid "URL Shortener"
-msgstr "Съкращаване на URL адреси"
+msgstr "Съкращаване на URL адреси (URL Shortener)"
 
 #. Add-on description
 #. Translators: Long description to be shown for this add-on on add-on information from add-ons manager
