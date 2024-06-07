@@ -2,7 +2,8 @@
 
 * Tekijä: Noelia Ruiz Martínez
 
-This add-on is used to shorten URLs from NVDA through [is.gd][1].
+Tätä lisäosaa käytetään URLien lyhentämiseen NVDA:sta [is.gd][1]-palvelun
+avulla.
 
 ## Lyhennä URL -valintaikkuna ##
 
@@ -19,10 +20,10 @@ Lyhennä URL -valintaikkuna sisältää seuraavat säätimet:
   painikkeisiin.
 * Kopioi lyhennetty URL. Tämä voidaan aktivoida myös URLien luettelosta
   painamalla Enter.
-* A readonly box showing details about the selected URL.
-* Set of controls to shorten a new URL: Provide the new URL; optionally, you
-  can set a display name and a custom subfix for the shortened URL. Finally,
-  press the Shorten URL button.
+* Vain luku -tyyppinen muokkausruutu, jossa näytetään URLin tiedot.
+* Säätimet uuden URLin lyhentämiseen: Anna uusi URL. Valinnaisesti voit
+  määrittää lyhennetylle URLille myös näyttönimen ja mukautetun
+  jälkiliitteen. Paina lopuksi Lyhennä URL -painiketta.
 * Nimeä uudelleen: Avaa valintaikkunan, jossa voidaan antaa luettelossa
   näkyvä uusi nimi valitulle URLille.
 * Poista: Avaa valintaikkunan, jossa valittu URL voidaan poistaa.
@@ -30,15 +31,15 @@ Lyhennä URL -valintaikkuna sisältää seuraavat säätimet:
   voidaan poistaa.
 * Sulje.
 
-## Changes for 8.0.0 ##
+## Muutokset versiossa 8.0.0 ##
 
-* Added a readonly box with details about the selected URL.
+* Lisätty vain luku -tyyppinen muokkausruutu, jossa näytetään URLin tiedot.
 
-## Changes for 5.0.0 ##
+## Muutokset versiossa 5.0.0 ##
 
-* The new URL dialog has been replaced with a set of controls in the main
-  dialog, so that the focus can be placed in the relevant field to fix
-  possible errors.
+* Uusi URL -valintaikkuna on korvattu muutamalla säätimellä
+  päävalintaikkunassa, jotta kohdistus voidaan sijoittaa asiaankuuluvaan
+  kenttään mahdollisten virheiden korjaamiseksi.
 
 ## Muutokset versiossa 2.0.0 ##
 
