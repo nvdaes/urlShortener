@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: urlShortener 2.0.0\n"
 "Report-Msgid-Bugs-To: nvda-translations@groups.io\n"
 "POT-Creation-Date: 2023-04-21 21:10+0000\n"
-"PO-Revision-Date: 2024-05-03 13:42+0500\n"
-"Last-Translator: Dragan Ratkovich\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2024-06-20 12:25+0300\n"
+"Last-Translator: Ruslan Kolodyazhni <rupelodn@gmail.com>\n"
+"Language-Team: Translators <nvda-translations@groups.io>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,7 +43,7 @@ msgstr "&Подробности:"
 
 #. Translators: The label of a field to enter an address for a new shortened URL.
 msgid "New &URL"
-msgstr "&URL"
+msgstr "Новый &URL"
 
 #. Translators: The label of a field to enter the name for a new URL.
 msgid "&Name for new URL"
