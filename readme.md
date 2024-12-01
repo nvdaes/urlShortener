@@ -38,8 +38,6 @@ The Shorten URL dialog includes the following controls:
 
 * Initial version.
 
-[1]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener
 
-[2]: https://www.nvaccess.org/addonStore/legacy?file=urlShortener-beta
 
 [1]: https://is.gd
