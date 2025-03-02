@@ -27,7 +27,6 @@ def disableInSecureMode(decoratedCls):
 
 @disableInSecureMode
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
-
 	scriptCategory = ADDON_SUMMARY
 
 	def __init__(self):
@@ -35,11 +34,15 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		self.toolsMenu = gui.mainFrame.sysTrayIcon.toolsMenu
 		# Translators: the name of a menu item.
 		self.urlsListItem = self.toolsMenu.Append(wx.ID_ANY, _("&Shorten URL..."))
-		gui.mainFrame.sysTrayIcon.Bind(wx.EVT_MENU, self.onShortenUrl, self.urlsListItem)
+		gui.mainFrame.sysTrayIcon.Bind(
+			wx.EVT_MENU,
+			self.onShortenUrl,
+			self.urlsListItem,
+		)
 
 	def terminate(self):
 		try:
-			self.toolsMenu .Remove(self.urlsListItem)
+			self.toolsMenu.Remove(self.urlsListItem)
 		except Exception:
 			pass
 
@@ -51,7 +54,7 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 
 	@script(
 		# Translators: message presented in input mode.
-		description=_("Activates the Shorten URL dialog.")
+		description=_("Activates the Shorten URL dialog."),
 	)
 	def script_activateShortenUrlDialog(self, gesture):
 		wx.CallAfter(self.onShortenUrl, None)

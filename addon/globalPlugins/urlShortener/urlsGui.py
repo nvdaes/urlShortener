@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 # URL Shortener: Plugin to shorten URLs with NVDA
-# Copyright (C) 2023 Noelia Ruiz Martínez
+# Copyright (C) 2023-2025 Noelia Ruiz Martínez
 # Released under GPL 2
 
 import json
@@ -17,8 +17,8 @@ import api
 import globalVars
 import ui
 from logHandler import log
-import gui
 from gui import guiHelper
+from gui.message import MessageDialog, ReturnCode
 
 from .isGd import IsGd, UrlMetadata
 from .skipTranslation import translate
@@ -35,7 +35,6 @@ def getUrlMetadataName(urlMetadata):
 
 
 class UrlsDialog(wx.Dialog):
-
 	_instance = None
 
 	def __new__(cls, *args, **kwargs):
@@ -57,11 +56,14 @@ class UrlsDialog(wx.Dialog):
 				self._urls.append(UrlMetadata(**url))
 			self._urls.sort(key=getUrlMetadataName)
 		except Exception as e:
-			self._urls = [UrlMetadata("example.com", "example.com", "https://is.gd/iKpnPV")]
+			self._urls = [
+				UrlMetadata("example.com", "example.com", "https://is.gd/iKpnPV"),
+			]
 			log.debugWarning(f"Could not open URLs file: {e}")
 		super().__init__(
+			parent,
 			# Translators: The title of a dialog.
-			parent, title=_("urls")
+			title=_("urls"),
 		)
 
 		mainSizer = wx.BoxSizer(wx.VERTICAL)
@@ -82,7 +84,8 @@ class UrlsDialog(wx.Dialog):
 		for n in range(len(self.choices)):
 			self.filteredItems.append(n)
 		self.urlsList = wx.ListBox(
-			self, choices=self.choices
+			self,
+			choices=self.choices,
 		)
 		self.urlsList.Selection = 0
 		self.urlsList.Bind(wx.EVT_LISTBOX, self.onUrlsListChoice)
@@ -90,7 +93,9 @@ class UrlsDialog(wx.Dialog):
 		changeUrlsSizer.Add(self.urlsList, proportion=1)
 		changeUrlsSizer.AddSpacer(guiHelper.SPACE_BETWEEN_BUTTONS_VERTICAL)
 		urlsListGroupContents.Add(changeUrlsSizer, flag=wx.EXPAND)
-		urlsListGroupContents.AddSpacer(guiHelper.SPACE_BETWEEN_ASSOCIATED_CONTROL_HORIZONTAL)
+		urlsListGroupContents.AddSpacer(
+			guiHelper.SPACE_BETWEEN_ASSOCIATED_CONTROL_HORIZONTAL,
+		)
 
 		buttonHelper = guiHelper.ButtonHelper(wx.VERTICAL)
 
@@ -102,9 +107,11 @@ class UrlsDialog(wx.Dialog):
 
 		# Translators: The label of an edit box to show more details about the selected URL.
 		detailsLabel = _("Deta&ils:")
-		detailsLabeledCtrl = gui.guiHelper.LabeledControlHelper(
-			self, detailsLabel, wx.TextCtrl,
-			style=wx.TE_MULTILINE | wx.TE_READONLY | wx.TE_DONTWRAP
+		detailsLabeledCtrl = guiHelper.LabeledControlHelper(
+			self,
+			detailsLabel,
+			wx.TextCtrl,
+			style=wx.TE_MULTILINE | wx.TE_READONLY | wx.TE_DONTWRAP,
 		)
 		self.detailsEdit = detailsLabeledCtrl.control
 
@@ -119,7 +126,10 @@ class UrlsDialog(wx.Dialog):
 
 		# Translators: The label of a field to enter a custom URL.
 		customUrlLabelText = _("Cus&tom URL")
-		self.customUrlTextCtrl = sHelper.addLabeledControl(customUrlLabelText, wx.TextCtrl)
+		self.customUrlTextCtrl = sHelper.addLabeledControl(
+			customUrlLabelText,
+			wx.TextCtrl,
+		)
 
 		# Translators: The label of a button to add a new URL.
 		self.newButton = buttonHelper.addButton(self, label=_("Short&en New URL"))
@@ -134,12 +144,19 @@ class UrlsDialog(wx.Dialog):
 		self.deleteButton = buttonHelper.addButton(self, label=_("&Delete..."))
 		self.deleteButton.Bind(wx.EVT_BUTTON, self.onDelete)
 
-		# Translators: The label of a button to delete settings folder.
-		self.removeSettingsButton = buttonHelper.addButton(self, label=_("Remove &saved URLs..."))
+		self.removeSettingsButton = buttonHelper.addButton(
+			self,
+			# Translators: The label of a button to delete settings folder.
+			label=_("Remove &saved URLs..."),
+		)
 		self.removeSettingsButton.Bind(wx.EVT_BUTTON, self.onRemoveSettings)
 
 		urlsListGroupContents.Add(buttonHelper.sizer)
-		urlsListGroupSizer.Add(urlsListGroupContents, border=guiHelper.BORDER_FOR_DIALOGS, flag=wx.ALL)
+		urlsListGroupSizer.Add(
+			urlsListGroupContents,
+			border=guiHelper.BORDER_FOR_DIALOGS,
+			flag=wx.ALL,
+		)
 		sHelper.addItem(urlsListGroupSizer)
 
 		# Message translated in NVDA core.
@@ -176,16 +193,20 @@ class UrlsDialog(wx.Dialog):
 			self.customUrlTextCtrl.SetFocus()
 			return
 		if customUrl and (len(customUrl) < 5 or len(customUrl) > 30):
-			# Translators: Message presented when a custom URL has a wrong length.
-			ui.message(_("This custom URL has %d characters. Length must be between 5 and 30.") % len(customUrl))
+			ui.message(
+				# Translators: Message presented when a custom URL has a wrong length.
+				_("This custom URL has %d characters. Length must be between 5 and 30.") % len(customUrl),
+			)
 			self.customUrlTextCtrl.SetFocus()
 			return
 		try:
 			url = IsGd(address, customUrl).getShortenedUrl()
 			if not url:
 				if customUrl:
-					# Translators: Message presented when a custom URL cannot be added.
-					ui.message(_("This custom URL is not available. Try a different one."))
+					ui.message(
+						# Translators: Message presented when a custom URL cannot be added.
+						_("This custom URL is not available. Try a different one."),
+					)
 					self.customUrlTextCtrl.SetFocus()
 				else:
 					# Translators: Message presented when an URL cannot be shortened.
@@ -194,12 +215,11 @@ class UrlsDialog(wx.Dialog):
 				return
 		except Exception as e:
 			wx.CallAfter(
-				gui.messageBox,
+				MessageDialog.alert,
 				# Translators: Message presented when a shortened URL cannot be added.
-				_('Cannot add URL: %s' % e),
+				_("Cannot add URL: %s" % e),
 				# Translators: Error message.
 				_("Error"),
-				wx.OK | wx.ICON_ERROR
 			)
 			raise e
 		urlMetadata = UrlMetadata(name, address, url)
@@ -230,7 +250,10 @@ class UrlsDialog(wx.Dialog):
 		filter = self.searchTextEdit.Value
 		if filter:
 			filter = re.escape(filter)
-			filterReg = re.compile(r"(?=.*?" + r")(?=.*?".join(filter.split(r"\ ")) + r")", re.U | re.IGNORECASE)
+			filterReg = re.compile(
+				r"(?=.*?" + r")(?=.*?".join(filter.split(r"\ ")) + r")",
+				re.U | re.IGNORECASE,
+			)
 		for index, choice in enumerate(self.choices):
 			if filter and not filterReg.match(choice):
 				continue
@@ -247,15 +270,15 @@ class UrlsDialog(wx.Dialog):
 		url = self._urls[self.filteredItems[self.sel]]
 		urlInfo = _(
 			# Translators: Info about the selected URL.
-			"Original URL: {}\n"
-			"Name: {}\n"
-			"Shortened URL: {}".format(
-				url.originalUrl, url.name, url.shortenedUrl
-			)
+			"Original URL: {}\n" "Name: {}\n" "Shortened URL: {}",
+		).format(
+			url.originalUrl,
+			url.name,
+			url.shortenedUrl,
 		)
 		self.detailsEdit.Value = urlInfo
 		self.renameButton.Enabled = self.sel >= 0
-		self.deleteButton.Enabled = (self.sel >= 0 and self.urlsList.Count > 1)
+		self.deleteButton.Enabled = self.sel >= 0 and self.urlsList.Count > 1
 		self.removeSettingsButton.Enabled = os.path.isdir(ADDON_CONFIG_PATH)
 
 	def onCopy(self, evt):
@@ -279,13 +302,16 @@ class UrlsDialog(wx.Dialog):
 
 	def onDelete(self, evt):
 		url = self._urls[self.filteredItems[self.sel]]
-		if gui.messageBox(
-			# Translators: The confirmation prompt displayed when the user requests to delete an URL.
-			_("Are you sure you want to delete this URL: %s?") % url.name,
-			# Message translated in NVDA core.
-			translate("Confirm Deletion"),
-			wx.YES | wx.NO | wx.ICON_QUESTION, self
-		) == wx.NO:
+		if (
+			MessageDialog.ask(
+				# Translators: The confirmation prompt displayed when the user requests to delete an URL.
+				_("Are you sure you want to delete this URL: %s?") % url.name,
+				# Message translated in NVDA core.
+				translate("Confirm Deletion"),
+				self,
+			)
+			== ReturnCode.NO
+		):
 			self.urlsList.SetFocus()
 			return
 
@@ -311,10 +337,12 @@ class UrlsDialog(wx.Dialog):
 
 	def onRename(self, evt):
 		with wx.TextEntryDialog(
+			self,
 			# Translators: The label of a field to enter a new name for an URL.
-			self, _("New name:"),
+			_("New name:"),
 			# Translators: The title of a dialog to rename an URL.
-			_("Rename URL"), value=self.stringSel
+			_("Rename URL"),
+			value=self.stringSel,
 		) as d:
 			if d.ShowModal() == wx.ID_CANCEL or not d.GetValue():
 				self.urlsList.SetFocus()
@@ -335,13 +363,16 @@ class UrlsDialog(wx.Dialog):
 		self.urlsList.SetFocus()
 
 	def onRemoveSettings(self, evt):
-		if gui.messageBox(
-			# Translators: The confirmation prompt displayed when the user requests to delete saved URLs.
-			_("Are you sure you want to delete your saved URLs?"),
-			# Message translated in NVDA core.
-			translate("Confirm Deletion"),
-			wx.YES | wx.NO | wx.ICON_QUESTION, self
-		) == wx.NO:
+		if (
+			MessageDialog.ask(
+				# Translators: The confirmation prompt displayed when the user requests to delete saved URLs.
+				_("Are you sure you want to delete your saved URLs?"),
+				# Message translated in NVDA core.
+				translate("Confirm Deletion"),
+				self,
+			)
+			== ReturnCode.NO
+		):
 			self.urlsList.SetFocus()
 			return
 		shutil.rmtree(ADDON_CONFIG_PATH, ignore_errors=True)
