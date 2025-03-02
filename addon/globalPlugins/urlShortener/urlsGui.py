@@ -270,11 +270,11 @@ class UrlsDialog(wx.Dialog):
 		url = self._urls[self.filteredItems[self.sel]]
 		urlInfo = _(
 			# Translators: Info about the selected URL.
-			"Original URL: {}\n" "Name: {}\n" "Shortened URL: {}".format(
-				url.originalUrl,
-				url.name,
-				url.shortenedUrl,
-			),
+			"Original URL: {}\n" "Name: {}\n" "Shortened URL: {}"
+		).format(
+			url.originalUrl,
+			url.name,
+			url.shortenedUrl,
 		)
 		self.detailsEdit.Value = urlInfo
 		self.renameButton.Enabled = self.sel >= 0
