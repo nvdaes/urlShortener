@@ -7,4 +7,4 @@
 
 
 def translate(text):
-    return _(text)
+	return _(text)

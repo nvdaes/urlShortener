@@ -57,7 +57,7 @@ class UrlsDialog(wx.Dialog):
 			self._urls.sort(key=getUrlMetadataName)
 		except Exception as e:
 			self._urls = [
-				UrlMetadata("example.com", "example.com", "https://is.gd/iKpnPV")
+				UrlMetadata("example.com", "example.com", "https://is.gd/iKpnPV"),
 			]
 			log.debugWarning(f"Could not open URLs file: {e}")
 		super().__init__(
@@ -94,7 +94,7 @@ class UrlsDialog(wx.Dialog):
 		changeUrlsSizer.AddSpacer(guiHelper.SPACE_BETWEEN_BUTTONS_VERTICAL)
 		urlsListGroupContents.Add(changeUrlsSizer, flag=wx.EXPAND)
 		urlsListGroupContents.AddSpacer(
-			guiHelper.SPACE_BETWEEN_ASSOCIATED_CONTROL_HORIZONTAL
+			guiHelper.SPACE_BETWEEN_ASSOCIATED_CONTROL_HORIZONTAL,
 		)
 
 		buttonHelper = guiHelper.ButtonHelper(wx.VERTICAL)
@@ -127,7 +127,8 @@ class UrlsDialog(wx.Dialog):
 		# Translators: The label of a field to enter a custom URL.
 		customUrlLabelText = _("Cus&tom URL")
 		self.customUrlTextCtrl = sHelper.addLabeledControl(
-			customUrlLabelText, wx.TextCtrl
+			customUrlLabelText,
+			wx.TextCtrl,
 		)
 
 		# Translators: The label of a button to add a new URL.
@@ -145,13 +146,16 @@ class UrlsDialog(wx.Dialog):
 
 		self.removeSettingsButton = buttonHelper.addButton(
 			# Translators: The label of a button to delete settings folder.
-			self, label=_("Remove &saved URLs...")
+			self,
+			label=_("Remove &saved URLs..."),
 		)
 		self.removeSettingsButton.Bind(wx.EVT_BUTTON, self.onRemoveSettings)
 
 		urlsListGroupContents.Add(buttonHelper.sizer)
 		urlsListGroupSizer.Add(
-			urlsListGroupContents, border=guiHelper.BORDER_FOR_DIALOGS, flag=wx.ALL
+			urlsListGroupContents,
+			border=guiHelper.BORDER_FOR_DIALOGS,
+			flag=wx.ALL,
 		)
 		sHelper.addItem(urlsListGroupSizer)
 
@@ -191,8 +195,7 @@ class UrlsDialog(wx.Dialog):
 		if customUrl and (len(customUrl) < 5 or len(customUrl) > 30):
 			ui.message(
 				# Translators: Message presented when a custom URL has a wrong length.
-				_("This custom URL has %d characters. Length must be between 5 and 30.")
-				% len(customUrl)
+				_("This custom URL has %d characters. Length must be between 5 and 30.") % len(customUrl),
 			)
 			self.customUrlTextCtrl.SetFocus()
 			return
@@ -202,7 +205,7 @@ class UrlsDialog(wx.Dialog):
 				if customUrl:
 					ui.message(
 						# Translators: Message presented when a custom URL cannot be added.
-						_("This custom URL is not available. Try a different one.")
+						_("This custom URL is not available. Try a different one."),
 					)
 					self.customUrlTextCtrl.SetFocus()
 				else:
