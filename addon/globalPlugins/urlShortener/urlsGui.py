@@ -145,8 +145,8 @@ class UrlsDialog(wx.Dialog):
 		self.deleteButton.Bind(wx.EVT_BUTTON, self.onDelete)
 
 		self.removeSettingsButton = buttonHelper.addButton(
-			# Translators: The label of a button to delete settings folder.
 			self,
+			# Translators: The label of a button to delete settings folder.
 			label=_("Remove &saved URLs..."),
 		)
 		self.removeSettingsButton.Bind(wx.EVT_BUTTON, self.onRemoveSettings)
