@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 # URL Shortener: Plugin to shorten URLs with NVDA
-# Copyright (C) 2023 Noelia Ruiz Martínez
+# Copyright (C) 2023-2025 Noelia Ruiz Martínez
 # Released under GPL 2
 
 import json
@@ -17,8 +17,8 @@ import api
 import globalVars
 import ui
 from logHandler import log
-import gui
 from gui import guiHelper
+from gui.message import MessageDialog, ReturnCode
 
 from .isGd import IsGd, UrlMetadata
 from .skipTranslation import translate
@@ -102,7 +102,7 @@ class UrlsDialog(wx.Dialog):
 
 		# Translators: The label of an edit box to show more details about the selected URL.
 		detailsLabel = _("Deta&ils:")
-		detailsLabeledCtrl = gui.guiHelper.LabeledControlHelper(
+		detailsLabeledCtrl = guiHelper.LabeledControlHelper(
 			self, detailsLabel, wx.TextCtrl,
 			style=wx.TE_MULTILINE | wx.TE_READONLY | wx.TE_DONTWRAP
 		)
@@ -194,12 +194,11 @@ class UrlsDialog(wx.Dialog):
 				return
 		except Exception as e:
 			wx.CallAfter(
-				gui.messageBox,
+				MessageDialog.alert,
 				# Translators: Message presented when a shortened URL cannot be added.
 				_('Cannot add URL: %s' % e),
 				# Translators: Error message.
 				_("Error"),
-				wx.OK | wx.ICON_ERROR
 			)
 			raise e
 		urlMetadata = UrlMetadata(name, address, url)
@@ -279,13 +278,13 @@ class UrlsDialog(wx.Dialog):
 
 	def onDelete(self, evt):
 		url = self._urls[self.filteredItems[self.sel]]
-		if gui.messageBox(
+		if MessageDialog.ask(
 			# Translators: The confirmation prompt displayed when the user requests to delete an URL.
 			_("Are you sure you want to delete this URL: %s?") % url.name,
 			# Message translated in NVDA core.
 			translate("Confirm Deletion"),
-			wx.YES | wx.NO | wx.ICON_QUESTION, self
-		) == wx.NO:
+			self
+		) == ReturnCode.NO:
 			self.urlsList.SetFocus()
 			return
 
@@ -335,13 +334,13 @@ class UrlsDialog(wx.Dialog):
 		self.urlsList.SetFocus()
 
 	def onRemoveSettings(self, evt):
-		if gui.messageBox(
+		if MessageDialog.ask(
 			# Translators: The confirmation prompt displayed when the user requests to delete saved URLs.
 			_("Are you sure you want to delete your saved URLs?"),
 			# Message translated in NVDA core.
 			translate("Confirm Deletion"),
-			wx.YES | wx.NO | wx.ICON_QUESTION, self
-		) == wx.NO:
+			self
+		) == ReturnCode.NO:
 			self.urlsList.SetFocus()
 			return
 		shutil.rmtree(ADDON_CONFIG_PATH, ignore_errors=True)
