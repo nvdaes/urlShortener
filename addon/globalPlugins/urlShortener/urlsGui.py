@@ -270,7 +270,7 @@ class UrlsDialog(wx.Dialog):
 		url = self._urls[self.filteredItems[self.sel]]
 		urlInfo = _(
 			# Translators: Info about the selected URL.
-			"Original URL: {}\n" "Name: {}\n" "Shortened URL: {}",
+			"Original URL: {}\nName: {}\nShortened URL: {}",
 		).format(
 			url.originalUrl,
 			url.name,
