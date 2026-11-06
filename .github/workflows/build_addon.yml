@@ -17,6 +17,8 @@ jobs:
     # Building the add-on template as an add-on does not make sense (and fails).
     # Do not modify this repo name with your own one! (should remain the template)
     if: github.repository != 'nvaccess/addonTemplate'
+    permissions:
+      contents: read
 
     runs-on: ubuntu-latest
 
