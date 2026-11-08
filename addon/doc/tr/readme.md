@@ -2,56 +2,42 @@
 
 * Yazar: Noelia Ruiz Martínez
 
-Bu eklenti, NVDA [is.gd][1] ile olan URL'leri kısaltmak için kullanılır.
+Bu eklenti, NVDA'dan [is.gd][1] aracılığıyla URL'leri kısaltmak için kullanılır.
 
-## URL Kısaltıcı iletişim kutusu ##
+## URL'yi kısalt iletişim kutusu ##
 
-NVDA menüsü, Araçlar alt menüsüne gidin ve URL Kısaltıcı öğesini
-etkinleştirin.
+NVDA menüsüne gidin, Araçlar alt menüsünden "URL'yi Kısalt" seçeneğini etkinleştirin.
 
-Alternatif olarak, NVDA'nın Girdi hareketleri iletişim kutusundan bir
-hareket atayabilirsiniz.
+Alternatif olarak, NVDA'nın Girdi hareketleri iletişim kutusundan bir hareket atayabilirsiniz.
 
-URL Kısaltıcı iletişim kutusu aşağıdaki kontrolleri içerir:
+URL'yi Kısalt iletişim kutusu aşağıdaki kontrolleri içerir:
 
-* Kayıtlı URL'lerden birini seçmek için bir liste. Bu listeden, arama yapmak
-  için shift+tab tuşlarına ve aşağıdaki düğmelerden birine basmak için tab
-  tuşuna basın.
-* Kısaltılmış URL'yi kopyala. Bu, URL listesinden Enter tuşuna basılarak da
-  etkinleştirilebilir.
-* Seçilen URL ile ilgili ayrıntıları gösteren salt okunur bir kutu.
-* Yeni bir URL'yi kısaltmaya yönelik kontroller kümesi: Yeni URL'yi
-  sağlayın; isteğe bağlı olarak kısaltılmış URL için bir görünen ad ve özel
-  bir alt ek belirleyebilirsiniz. Son olarak URL'yi Kısalt düğmesine basın.
-* Yeniden adlandır: listede seçilen URL'yi görüntülemek için yeni bir ad
-  sağlamak üzere bir iletişim kutusu açar.
-* Sil: seçili URL'yi silmek için bir iletişim kutusu açar.
-* Kaydedilen URL'leri kaldır: kaydedilen URL'leri yapılandırma klasöründen
-  kaldırmak için bir iletişim kutusu açar.
+* Kaydedilmiş URL'lerden birini seçmek için bir liste. Bu listeden, arama yapmak için Shift+Sekme tuşlarına, sonraki düğmelerden birine basmak için ise Sekme tuşuna basın.
+* Kısaltılmış URL'yi kopyala. Bu özellik, URL listesinden Enter tuşuna basılarak da etkinleştirilebilir.
+* Seçilen URL hakkında ayrıntıları gösteren salt okunur bir kutu.
+* Yeni bir URL'yi kısaltmak için kontroller: Yeni URL'yi girin; isteğe bağlı olarak, kısaltılmış URL için bir görünen ad ve özel bir alt ek belirleyebilirsiniz. Son olarak, "URL'yi Kısalt" düğmesine basın.
+* Yeniden Adlandır: Seçilen URL'nin listede görüntülenmesi için yeni bir ad girmenizi sağlayan bir iletişim kutusu açar.
+* Sil: Seçilen URL'yi silmek için bir iletişim kutusu açar.
+* Kaydedilmiş URL'leri kaldır: Yapılandırma klasöründen kaydedilmiş URL'leri kaldırmak için bir iletişim kutusu açar.
 * Kapat.
 
 ## 8.0.0 için değişiklikler ##
 
-* Seçilen URL ile ilgili ayrıntıları içeren salt okunur bir kutu eklendi.
+* Seçilen URL hakkında ayrıntıları içeren salt okunur bir kutu eklendi.
 
 ## 5.0.0 için değişiklikler ##
 
-* Yeni URL iletişim kutusu, ana iletişim kutusundaki bir dizi kontrolle
-  değiştirildi; böylece olası hataları düzeltmek için odak ilgili alana
-  yerleştirilebiliyor.
+* Yeni URL iletişim kutusu, ana iletişim kutusundaki bir dizi kontrolle değiştirildi; böylece olası hataları düzeltmek için ilgili alana odaklanılabilir.
 
 ## 2.0.0 için değişiklikler ##
 
-* URL Kısaltıcı seçeneği, eklentileri yeniden yüklerken Araçlar alt
-  menüsünde birden çok kez görünmez.
-* Yeni URL iletişim kutusu, kısaltılmış URL için özel bir alt ek sağlamak
-  üzere bir düzenleme kutusu içerir.
+* Eklentiler yeniden yüklendiğinde, Araçlar alt menüsünde "URL'yi Kısalt" seçeneği birden fazla kez görünmeyecektir.
+* Yeni URL iletişim kutusu, kısaltılmış URL için özel bir alt ek sağlamak üzere bir düzenleme kutusu içerir.
 
 ## 1.0.0 için değişiklikler ##
 
 * İlk sürüm.
 
 
-[[!tag dev stable]]
 
 [1]: https://is.gd
