@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nvdaaddons\n"
 "Report-Msgid-Bugs-To: 'nvda-translations@groups.io'\n"
-"POT-Creation-Date: 2026-11-06 19:50+0000\n"
-"PO-Revision-Date: 2026-11-08 11:25\n"
+"POT-Creation-Date: 2026-11-09 00:15+0000\n"
+"PO-Revision-Date: 2026-11-09 00:16\n"
 "Last-Translator: \n"
 "Language-Team: Bulgarian\n"
 "Language: bg_BG\n"
@@ -171,6 +171,6 @@ msgstr "Съкращаване на URL адреси с помощта на NVDA
 #. Brief changelog for this version
 #. Translators: what's new content for the add-on version to be shown in the add-on store
 #: buildVars.py:28
-msgid "* Compatible with NVDA 2026.1."
+msgid "* Updates to translations."
 msgstr ""
 
